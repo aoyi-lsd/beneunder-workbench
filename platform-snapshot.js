@@ -5,3 +5,8 @@ function setup(){const select=document.getElementById('guide-window');if(!select
 select.addEventListener('change',show);const date=document.querySelector('.guide-date');if(date)date.innerHTML='历史视频截至 2026.10.29<br>库存快照 2026.11.04<br>近7天商品样本：10.30采集<br>更新方式：登录后人工采集';}
 setup();
 })();
+(()=>{
+function fallback(img){if(!(img instanceof HTMLImageElement)||img.dataset.rootFallback)return;const src=img.getAttribute('src')||'';if(!/^assets\/products\/[a-f0-9]+\.jpg$/.test(src))return;img.dataset.rootFallback='1';img.src=src.split('/').pop();}
+document.addEventListener('error',event=>fallback(event.target),true);
+document.querySelectorAll('img').forEach(img=>{if(img.complete&&!img.naturalWidth)fallback(img);});
+})();
