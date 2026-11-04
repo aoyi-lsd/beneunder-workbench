@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蕉下 26 秋冬货盘 · 抖音爆款短视频脚本</title>
+<style>
+:root{
+  --bg:#f6f2ec; --bg2:#efe8de; --card:#ffffff;
+  --ink:#2a241d; --sub:#8a7b68; --line:#e7ded1;
+  --accent:#a5855b; --accent2:#6f5b44; --warm:#c9a06a;
+  --chipbg:#f3ece2; --chipink:#6f5b44; --red:#e0462e;
+  --shadow:0 1px 2px rgba(60,48,32,.05),0 6px 24px rgba(60,48,32,.07);
+  --shadow-h:0 4px 10px rgba(60,48,32,.08),0 18px 46px rgba(60,48,32,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.65}
+a{color:inherit}
+.hero{position:relative;overflow:hidden;color:#f7f1e6;
+  background:radial-gradient(120% 140% at 15% -10%,#7a6547 0%,#5a4a34 45%,#3d3227 100%)}
+.hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 80% at 85% 20%,rgba(201,160,106,.25),transparent 60%)}
+.hero-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:58px 28px 50px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:2px;color:#d8c6a8;margin-bottom:16px}
+.brand .dot{width:6px;height:6px;border-radius:50%;background:var(--warm)}
+.hero h1{font-size:clamp(26px,4.4vw,44px);font-weight:700;letter-spacing:1px;line-height:1.25;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:var(--warm)}
+.hero p{font-size:15px;color:#d9cdbc;max-width:660px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px}
+.stat b{display:block;font-size:20px;font-weight:700;color:#f2e6d2}
+.stat span{font-size:12px;color:#cbbda6}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px 80px}
+.section{margin-top:40px}
+.section-title{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700;margin-bottom:18px}
+.section-title::before{content:"";width:4px;height:20px;border-radius:2px;background:var(--accent)}
+.hot{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.hot-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.hot-card .ico{font-size:22px;margin-bottom:8px}
+.hot-card b{display:block;font-size:15px;margin-bottom:4px}
+.hot-card p{font-size:13px;color:var(--sub)}
+.links{display:flex;flex-direction:column;gap:10px}
+.link{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);transition:.2s;text-decoration:none}
+.link:hover{border-color:var(--accent)}
+.link .no{flex:none;width:26px;height:26px;border-radius:8px;background:var(--chipbg);color:var(--accent2);
+  display:grid;place-items:center;font-size:13px;font-weight:700}
+.link .tt{font-size:14px;font-weight:600;color:var(--ink)}
+.link .u{font-size:12px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.link .cat{flex:none;font-size:12px;color:var(--accent2);background:var(--chipbg);border-radius:6px;padding:2px 8px;font-weight:600}
+.link .lbody{flex:1;min-width:0}
+.link .data{flex:none;font-size:12px;color:#b3542f;font-weight:600;white-space:nowrap}
+.filter{position:sticky;top:0;z-index:20;background:rgba(246,242,236,.86);backdrop-filter:blur(10px);
+  margin:-20px -28px 0;padding:14px 28px;border-bottom:1px solid var(--line)}
+.filter-inner{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:6px}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--sub);
+  border-radius:999px;padding:7px 15px;font-size:13px;transition:.2s;user-select:none}
+.chip:hover{border-color:var(--accent);color:var(--accent2)}
+.chip.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.chip.big-c{font-weight:600}
+.chip.sub-c{font-size:11.5px;padding:5px 12px;opacity:.88}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.cat-anchor{margin:36px 0 16px;font-size:15px;font-weight:700;color:var(--accent2);display:flex;align-items:center;gap:10px}
+.cat-anchor .bar{flex:1;height:1px;background:var(--line)}
+.cat-anchor .cnt{font-size:12px;font-weight:500;color:var(--sub)}
+.sub-cat{margin:14px 0 10px;font-size:13px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px}
+.sub-cat::before{content:"";width:3px;height:12px;border-radius:2px;background:var(--warm)}
+.sub-cat .scnt{font-size:11px;font-weight:500;color:var(--sub)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.28s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-h)}
+.card-stock{flex:1;min-width:0;border-left:1px dashed var(--line);padding-left:14px;display:flex;flex-direction:column;justify-content:center}
+.stock-title{font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:10px;letter-spacing:1px}
+.stock-list{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+.stock-item{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.stock-item:last-child{border-bottom:none}
+.stock-item .color{color:var(--ink);line-height:1.3;min-width:0;white-space:nowrap}
+.stock-item.wide{grid-column:1 / -1}
+.stock-item .num{color:var(--red);font-weight:700;flex:none}
+.stock-total{border-top:1px solid var(--line);border-bottom:none;margin-top:6px;padding-top:6px}
+.stock-total .color{font-weight:700}
+.card-top{display:flex;gap:14px;padding:16px 18px 14px;border-bottom:1px dashed var(--line)}
+.card-img{flex:none;width:92px;height:116px;border-radius:12px;overflow:hidden;background:#faf7f1;
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.card-img img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.card-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.card-info h3{font-size:15.5px;font-weight:700;line-height:1.35}
+.code{font-size:11.5px;color:var(--sub);letter-spacing:.5px}
+.price-box{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price-op{font-size:12.5px;color:#b0a496;text-decoration:line-through}
+.price-vp{font-size:18px;font-weight:800;color:var(--red)}
+.price-vp small{font-size:12px;font-weight:500;color:var(--sub);margin-left:4px}
+.stock{font-size:12px;color:#8a5a2f;font-weight:600}
+.stock b{color:var(--accent2)}
+.sell{font-size:12px;color:var(--accent2);background:var(--chipbg);border-left:3px solid var(--accent);
+  border-radius:6px;padding:5px 9px;line-height:1.4}
+.scripts{padding:14px 18px}
+.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.tab{font-size:12.5px;font-weight:600;color:var(--sub);background:var(--chipbg);border:1px solid transparent;
+  border-radius:8px;padding:6px 12px;cursor:pointer;transition:.2s;user-select:none}
+.tab:hover{color:var(--accent2)}
+.tab.active{background:var(--accent2);color:#fff}
+.script-body{display:none;font-size:13.5px;line-height:1.7}
+.script-body.active{display:block}
+.script-body .node{margin-bottom:9px;display:flex;gap:8px}
+.script-body .t{flex:none;font-size:11px;font-weight:700;color:var(--accent2);background:var(--chipbg);
+  border-radius:6px;padding:1px 7px;height:fit-content;margin-top:2px}
+.script-body .x{color:var(--ink)}
+.card-foot{padding:10px 18px 14px;border-top:1px solid var(--line)}
+.card-foot .tt{font-size:11px;color:var(--sub);letter-spacing:1px;margin-bottom:7px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;color:var(--chipink);background:var(--chipbg);border-radius:999px;padding:3px 10px}
+a.tag{text-decoration:none;cursor:pointer;transition:.2s}
+a.tag:hover{background:var(--accent);color:#fff}
+.tag.live{background:#f0e7d8;color:var(--accent2);font-weight:600}
+.tag.live::before{content:"▶ ";font-size:9px;color:var(--accent)}
+.footnote{max-width:1120px;margin:50px auto 0;padding:0 28px;font-size:12.5px;color:var(--sub);text-align:center}
+.top-note{font-size:12px;color:var(--sub);margin-bottom:6px}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:20px;margin:26px auto 8px;max-width:760px}
+.po{flex:1;max-width:200px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.po .medal{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:24px;box-shadow:0 4px 14px rgba(0,0,0,.16)}
+.po.rank1 .medal{width:72px;height:72px;font-size:32px;background:linear-gradient(135deg,#f9e08a,#e0a23a)}
+.po.rank2 .medal{background:linear-gradient(135deg,#e9edf2,#aeb8c2)}
+.po.rank3 .medal{background:linear-gradient(135deg,#ecbe90,#c07a42)}
+.po .nm{font-weight:700;font-size:14px;margin-top:9px;line-height:1.3}
+.po .ct{font-size:11px;color:var(--sub);margin-top:3px}
+.po .pimg{width:62px;height:62px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);margin-bottom:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.po .pimg img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.po.rank1 .pimg{width:74px;height:74px}
+.po .pimg.ph{background:linear-gradient(135deg,#f3ece2,#e9dfcf)}
+.po .bar{width:100%;border-radius:12px 12px 0 0;margin-top:12px;padding-top:14px;color:#fff;box-sizing:border-box}
+.po.rank1 .bar{height:132px;background:linear-gradient(180deg,#f6d566,#d4931f)}
+.po.rank2 .bar{height:96px;background:linear-gradient(180deg,#dde3ea,#8f9aa8)}
+.po.rank3 .bar{height:76px;background:linear-gradient(180deg,#e9ba92,#af6a35)}
+.po .bar b{display:block;font-size:19px}
+.po .bar span{display:block;font-size:11px;opacity:.92;margin-top:2px}
+.rank-list{margin-top:26px;display:flex;flex-direction:column;gap:8px}
+.rank-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow)}
+.rank-item .no{flex:none;width:32px;height:32px;border-radius:8px;background:var(--chipbg);color:var(--accent2);display:grid;place-items:center;font-weight:700;font-size:14px}
+.rank-item .rimg{flex:none;width:42px;height:42px;border-radius:8px;overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.rank-item .rimg img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.rank-item .rimg.ph{background:linear-gradient(135deg,#f3ece2,#e9dfcf)}
+.rank-item .rn{font-weight:600;font-size:14px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-item .rc{font-size:12px;color:var(--sub);flex:none}
+.rank-item .rs{flex:none;color:var(--red);font-weight:700;font-size:14px}
+.rank-item .rs small{color:var(--sub);font-weight:500;font-size:11px;margin-left:5px}
+.lb{position:fixed;inset:0;background:rgba(20,14,8,.78);z-index:99;display:none;align-items:center;justify-content:center;padding:36px;cursor:zoom-out}
+.lb.show{display:flex}
+.lb img{max-width:92%;max-height:92%;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.5);cursor:default}
+.lb .close{position:absolute;top:20px;right:30px;color:#fff;font-size:40px;line-height:1;cursor:pointer;opacity:.85}
+.lb .close:hover{opacity:1}
+@media(max-width:560px){
+  .hero-inner{padding:48px 20px 40px}
+  .grid{grid-template-columns:1fr}
+  .wrap{padding:0 18px 60px}
+}
+.hot-sales{margin-top:7px;padding:5px 10px;background:linear-gradient(90deg,#ff5f1f,#ff8f3d);color:#fff;border-radius:6px;font-size:12px;display:inline-flex;align-items:baseline;gap:6px}.hot-sales .hs-amount{font-size:16px;font-weight:700;letter-spacing:.5px}.hot-sales .hs-label{opacity:.95}
+.filter-search{margin:2px 0 10px;padding:0 2px}.filter-search input{width:100%;box-sizing:border-box;padding:9px 14px;border:1px solid #e6e6e6;border-radius:8px;font-size:14px;outline:none;transition:border-color .2s}.filter-search input:focus{border-color:#ff5f1f}.po,.rank-item{cursor:pointer;transition:transform .15s}.po:hover,.rank-item:hover{transform:translateY(-2px)}.card.flash{animation:cardFlash 2.6s ease}@keyframes cardFlash{0%,55%{box-shadow:0 0 0 3px #ff5f1f;border-color:#ff5f1f}100%{box-shadow:none}}
+.filter-top{display:flex;align-items:center;gap:10px}.filter-top .filter-search{flex:1;min-width:0}.filter-toggle{flex-shrink:0;min-height:44px;padding:10px 18px;border:1px solid #b64a20;border-radius:10px;background:#b64a20;font-size:14px;font-weight:700;color:#fff;cursor:pointer;white-space:nowrap;box-shadow:0 3px 10px rgba(112,49,22,.16)}.filter-toggle:hover{background:#933b19;border-color:#933b19}.filter-toggle:focus-visible,.filter-float:focus-visible{outline:3px solid #e9ad76;outline-offset:4px}.filter-rows.collapsed{display:none}
+.filter-float{position:fixed;right:24px;bottom:28px;bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;min-height:52px;padding:12px 20px;border:1px solid #d08457;border-radius:999px;background:#7d351d;color:#fff;font:700 15px inherit;cursor:pointer;box-shadow:0 6px 24px rgba(75,36,19,.28);transition:background .18s,transform .18s}.filter-float:hover{background:#a34621;transform:translateY(-2px)}.filter-float svg{width:19px;height:19px;flex:none}.filter-float-label{font-size:15px;font-weight:700}.filter-float-arrow{font-size:14px;opacity:.8}
+@media(max-width:600px){.filter-float{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));min-height:48px;padding:11px 16px}.filter-toggle{padding:10px 12px}.filter-top{gap:8px}body{padding-bottom:82px}}
+.video-reference{display:flex;flex-direction:column;align-items:flex-start;gap:5px;max-width:100%;white-space:normal}.video-brief{font-size:12px;line-height:1.6;font-weight:400;color:#666;text-align:left;overflow-wrap:anywhere}
+</style>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand"><span class="dot"></span> Beneunder · 产品短视频推广指导</div>
+    <h1>蕉下产品短视频<em>推广指导工作台</em></h1>
+    <p>试用版 · 49 个商品卡片 · 推广建议 / 内容参考 / 拍摄任务 · 历史数据驱动，实时热度尚未接入</p>
+    <div class="hero-stats">
+      <div class="stat"><b>49</b><span>货盘商品卡片</span></div>
+      <div class="stat"><b>10/29</b><span>现有视频数据截至</span></div>
+      <div class="stat"><b>拍摄卡</b><span>从选题到开拍</span></div>
+      <div class="stat"><b>待接入</b><span>近7天 / 实时热度</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="section" id="top10Section">
+    <h2 class="section-title">蕉下 TOP10 商品榜</h2>
+    <div class="top-note">商品库 · 近30天 · 按销售额排序 · 更新时间 2026/10/28</div>
+    <div class="podium" id="podium"></div>
+    <div class="rank-list" id="rankList"></div>
+  </section>
+
+  <section class="guide" id="contentGuide" aria-label="短视频推广指导工作台"></section>
+
+  <section class="section" id="hotSection">
+    <h2 class="section-title">秋冬选题灵感 · 非实时热点</h2>
+    <div class="hot">
+      <div class="hot-card"><div class="ico">🔥</div><b>换季保暖场景</b><p>从早晚温差、通勤叠穿切入，具体保暖指标须核对本款证据；这里不是当前热度排名。</p></div>
+      <div class="hot-card"><div class="ico">🎨</div><b>秋冬配色灵感</b><p>低饱和燕麦、奶油白、浅驼可作为配色选题；未接入实时话题榜，不声称当前登榜。</p></div>
+      <div class="hot-card"><div class="ico">📐</div><b>爆量公式</b><p>换季痛点共鸣 → 细节分层拆解 → 具象化体验表达。</p></div>
+      <div class="hot-card"><div class="ico">💬</div><b>高频话术</b><p>「一件抵三件」「反季捡漏」「门店价锚点」「机洗省心」。</p></div>
+    </div>
+  </section>
+</main>
+
+<main class="wrap">
+  <section class="section" style="margin-top:30px">
+    <h2 class="section-title">产品脚本墙</h2>
+    <div class="filter" id="filter"><div class="filter-inner" id="filterInner"></div></div>
+    <div id="grid"></div>
+  </section>
+</main>
+
+<p class="footnote">试用版依据货盘与历史数据生成策划建议，非实时热度；发布前核对款号、价格、库存及卖点证据。任务与反馈仅保存在本机，参考视频可直达抖音。</p>
+
+<script>
+const IMGS={"CT023":"assets/products/859cd85040c887e4776d.jpg","CT024":"assets/products/18c8b87081a74808d308.jpg","CT013":"assets/products/3b06e9a29e092842d608.jpg","PM043":"assets/products/4e80ecb41119f77cd7a9.jpg","PM021":"assets/products/9c2c659223af1724b698.jpg","PM023":"assets/products/59c107e12e4512b3315c.jpg","PM007":"assets/products/5874f1760d097db8cd24.jpg","PM002/PM006":"assets/products/383bb23271b9fa5a77ba.jpg","SF015":"assets/products/bab8e2aae91db1d69eba.jpg","SF027":"assets/products/95e410ad3119e5fefceb.jpg","SF016":"assets/products/7a670d59ab1073d25913.jpg","SF028":"assets/products/396e66c59db3f501b3d1.jpg","HW001":"assets/products/db537aea46426e436ea0.jpg","UV009":"assets/products/8dfdaeb63daee8d86028.jpg","CL010":"assets/products/e39a5f64f1e68bbfec05.jpg","PM028":"assets/products/71212a2d211723f0efb7.jpg","PM030":"assets/products/76e25570457a323aa8e9.jpg","PM037":"assets/products/36dc2926c2f7db0cbd55.jpg","PF007":"assets/products/8074c401d73ab5eada4d.jpg","PF005":"assets/products/8986cb852354594cf700.jpg","PF004":"assets/products/1403f4f67f26ab2e9a22.jpg","CL023":"assets/products/d3b8a53f8732bd867a18.jpg","CL026":"assets/products/aca55d4b128b33cf1e8f.jpg","CL028":"assets/products/425da5f6de88b9e12a5e.jpg","HD008":"assets/products/cb068b90dbb8c8883515.jpg","HD012":"assets/products/129fa73d9d676de01c55.jpg","CL021":"assets/products/b867c0a1cdaaa298445c.jpg","EL033/EL035":"assets/products/269c616f520884f89898.jpg","EL012/EL015":"assets/products/721c64d1f4f6708e8940.jpg","SF009":"assets/products/092d1aac0a7722360e1e.jpg","EL009":"assets/products/b692a9bf1cda110a99f5.jpg","EL011":"assets/products/390f42cc690aeccd3f02.jpg","HE024":"assets/products/537ca75eb7ed9fe650dc.jpg","WB007/WB006":"assets/products/bfb4c0106aa89765fd6f.jpg","SF056":"assets/products/9539851ffe4e0058ed61.jpg","PM020":"assets/products/6d223bf72987c856fb32.jpg","HW004":"assets/products/c9c6dcd3ebfcaba886fc.jpg","DS566":"assets/products/e3539570a6fe294c8dc5.jpg","PM058":"assets/products/11305d0ef55e04e7876a.jpg","PM050":"assets/products/7ee77675f06ce06d6f79.jpg","PM054":"assets/products/95f6bbcd6d9f24dc6dee.jpg","SF054":"assets/products/bf59f8c995324eb3e3d5.jpg","CT04926":"assets/products/fd43f8043fb3bc936c30.jpg","EL041/EL039":"assets/products/ed663e655c6c748d8281.jpg","LC010":"assets/products/11a7d1d510b78cef99ff.jpg","LC007":"assets/products/263cb9e5753409be78f0.jpg","LC014":"assets/products/228bfc23a5d82b06e316.jpg","LC012":"assets/products/61141e1abd9139f3848b.jpg","UV002":"assets/products/3b1a41b01fc50dd45988.jpg","SOFT":"assets/products/aaa82a9a0846c29cc6c2.jpg"};
+
+const STOCK={"CT023": 25486, "CT024": 2402, "CT013": 18858, "PM043": 4991, "CL010": 17612, "PM021": 9735, "PM023": 1503, "PM007": 25446, "PM002": 16780, "PM006": 13162, "SF015": 4033, "SF027": 3636, "SF016": 908, "SF028": 1029, "HW001": 3319, "DR029": 21, "UV009": 2290, "PM028": 31156, "PM030": 918, "PM037": 1945, "PF007": 3493, "PF005": 8623, "PF004": 6426, "CL023": 1893, "CL026": 8787, "CL028": 4407, "CL021": 1054, "HD008": 2771, "HD012": 1008, "EL033": 2225, "EL035": 7990, "EL012": 1839, "EL015": 617, "SF009": 2161, "EL009": 2198, "EL011": 211, "HE024": 2981, "WB007": 776, "WB006": 420, "SF056": 1396, "PM020": 319, "HW004": 25872, "DS566": 16, "PM058": 1611, "PM050": 23914, "PM054": 16543, "SF054": 4017, "CT04926": 0, "EL041": 4217, "EL039": 3182, "LC010": 8179, "LC007": 5328, "LC014": 0, "LC012": 6850, "UV002": 284};
+
+const STOCK_COLOR={"CT023": {"漫暮黑": 18276, "霜奶白": 5592, "红糖棕": 900, "芋奶紫": 537, "山岭棕": 181}, "CT024": {"漫暮黑": 969, "霜奶白": 946, "红糖棕": 292, "云烟蓝": 193}, "CT013": {"漫暮黑": 11872, "霜奶白": 4309, "苏木棕": 1874, "松木灰": 268, "烟绯紫": 189, "极夜蓝": 184, "山岭棕": 94, "沁葡紫": 64}, "PM043": {"奶杏白": 2754, "漫暮黑": 1077, "生巧棕": 498, "映野灰": 276, "沁葡紫": 193, "云烟蓝": 192}, "CL010": {"沁柔白": 13291, "漫暮黑": 3510, "石墨灰": 647, "映野灰": 162}, "PM021": {"银叶灰": 4167, "红糖棕": 2497, "幻影灰": 2095, "椰米白": 975}, "PM023": {"漫暮黑": 736, "松木灰": 307, "沁葡紫": 230, "云烟蓝": 228}, "PM007": {"幻影灰": 10953, "椰米白": 5424, "沁葡紫": 4161, "银叶灰": 3865, "麦秆咖": 303, "云烟蓝": 293, "韵木棕": 244, "卵石灰": 153, "烟熏褐粉": 45}, "PM002": {"幻影灰": 7749, "椰米白": 3784, "松木灰": 2997, "红糖棕": 1297, "沁葡紫": 951, "原露米": 0, "清烟蓝": 0, "绣球紫": 0, "麦秆咖": 0, "韵木棕": 0}, "PM006": {"秋岩棕": 5631, "幻影灰": 5188, "银沙米": 1207, "银叶灰": 1135, "原露米": 0, "墨海黑": 0, "清烟蓝": 0, "绣球紫": 0, "麦秆咖": 0, "韵木棕": 0}, "SF015": {"红糖棕": 2173, "浅月灰": 1227, "极夜蓝": 632}, "SF027": {"漫暮黑": 1357, "原露米": 1257, "浅雾粉": 1018, "熟栗红": 2, "秋岩棕": 0, "藕荷粉": 0}, "SF016": {"椰米白": 431, "漫暮黑": 212, "红糖棕": 171, "云烟蓝": 93}, "SF028": {"浅雾粉": 548, "漫暮黑": 354, "原露米": 96, "清烟蓝": 30}, "HW001": {"海盐灰": 2451, "极夜蓝": 868}, "DR029": {"暮林紫": 8, "漫暮黑": 7, "糯冰青": 6}, "UV009": {"燕麦白": 1030, "幽谷黑": 734, "云烟蓝": 355, "秋岩棕": 171}, "PM028": {"深竹绿": 12176, "栗灰棕": 12100, "红糖棕": 2551, "沁葡紫": 2506, "银沙米": 1761, "云烟蓝": 50, "山岭棕": 8}, "PM030": {"极夜蓝-墨染云絮": 291, "冷月白-银沙米": 261, "红糖棕-墨染云絮": 258, "沁葡紫-冷烟云絮": 107}, "PM037": {"砾岩咖-砾岩咖": 937, "漫暮黑-幻影灰": 515, "深咖灰-橄榄云絮": 492}, "PF007": {"紫菀花": 1255, "原露米": 1068, "蓝烟灰": 771, "漫暮黑": 398}, "PF005": {"漫暮黑": 3023, "蓝烟灰": 2575, "薄灰绿": 1543, "紫菀花": 1285, "月牙蓝": 195}, "PF004": {"漫暮黑": 3463, "秋岩棕": 1364, "原露米": 1315, "月牙蓝": 283}, "CL023": {"漫暮黑": 935, "原露米": 640, "蓝烟灰": 317}, "CL026": {"秋岩棕": 7966, "薄灰绿": 654, "漫暮黑": 132, "蓝烟灰": 34}, "CL028": {"漫暮黑": 2175, "深卡其": 754, "木茶青": 741, "深空灰": 735}, "CL021": {"蓝烟灰": 330, "漫暮黑": 327, "紫菀花": 239, "薄灰绿": 157}, "HD008": {"漫暮黑": 1291, "松露棕": 664, "茶岩棕": 476, "奶杏白": 339}, "HD012": {"奶杏白": 435, "漫暮黑": 423, "古木棕": 121, "茶岩棕": 28}, "EL033": {"浅月青": 1117, "漫暮黑": 1107}, "EL035": {"浅月青": 7374, "漫暮黑": 616}, "EL012": {"秋岩棕": 966, "烟纱灰": 568, "漫暮黑": 305}, "EL015": {"秋岩棕": 357, "烟纱灰": 239, "漫暮黑": 21}, "SF009": {"原露米": 943, "秋岩棕": 664, "烟纱灰": 553}, "EL009": {"秋岩棕": 1066, "羽花云絮": 992, "漫暮黑": 139}, "EL011": {"秋岩棕": 208, "榛果灰": 3}, "HE024": {"漫暮黑": 2981}, "WB007": {"幻影灰": 367, "苏木棕": 244, "银叶灰": 163, "漫暮黑": 0}, "WB006": {"银叶灰": 347, "幻影灰": 36, "苏木棕": 29, "漫暮黑": 7}, "SF056": {"雾卡其": 1351, "幻影灰": 36, "深卡其": 7}, "PM020": {"子墨灰": 165, "银叶灰": 96, "苏木棕": 57}, "HW004": {"默咖米": 9970, "默絮灰": 9154, "砺石灰": 3873, "紫栗棕": 2272, "焰萝红": 601}, "DS566": {"漫暮黑": 7, "海棠紫": 4, "霜奶黄": 3, "石墨灰": 1, "柠檬黄": 0, "清浅蓝": 0, "桃露粉": 0}, "PM058": {"极夜尘迹": 783, "海棠织云": 774, "流岚织云": 47, "霜银尘迹": 5, "落日尘迹": 0}, "PM050": {"深花灰": 16612, "蓝烟灰": 4582, "乌杏棕": 2592, "薄烟紫": 127}, "PM054": {"乌杏棕": 9664, "漫暮黑": 3964, "原露米": 2642, "云霾粉": 272}, "SF054": {"沁柔白+薄雾绿+暖沙杏": 1996, "沁柔白+暖沙杏+素柠黄": 627, "素柠黄+奶盐灰+沁柔白": 547, "薄雾绿+素柠黄+奶盐灰": 458, "暖沙杏+素柠黄+奶盐灰": 387}, "CT04926": {}, "EL041": {"漫暮黑×4": 2233, "沁柔白+藤雾灰+石墨灰+漫暮黑": 1930, "奶杏白+檀木棕+绛咖紫+漫暮黑": 32, "藤雾灰+檀木棕+石墨灰+绛咖紫": 21, "浅炭灰+清浅绿+鸳鸯咖+云岚绿": 0, "椰米白+浅炭灰+石墨灰+漫暮黑": 0, "椰米白×4": 0}, "EL039": {"沁柔白×4": 1588, "沁柔白+藤雾灰+暮夜粉+漫暮黑": 1297, "椰米白×4": 166, "漫暮黑×4": 60, "奶杏白+暮夜粉+檀木棕+绛咖紫": 36, "奶杏白+檀木棕+绛咖紫+漫暮黑": 33, "淡月黄+原叶绿+鸳鸯咖+青茄紫": 0, "椰米白+奶油紫+鸳鸯咖+漫暮黑": 0}, "LC010": {"浅砾咖": 1777, "松烟黑": 1678, "烟绛紫": 1446, "银纱灰": 1420, "涧樱粉": 837, "樵木褐": 610, "峦雾绿": 222, "汐渊蓝": 187}, "LC007": {"默絮灰": 1620, "浅沙咖": 1035, "松烟黑": 1008, "芋灰粉": 660, "赤漠棕": 285, "波苔绿+萤草绿": 226, "麦秆黄＋奶栗黄": 211, "杏芒白": 123, "樱蕊红+橘霞粉": 51, "星暮紫": 38, "烟绛紫": 33, "麦秆黄": 21, "岭雀蓝": 14}, "LC014": {"薄暮蓝": 0, "漫暮黑": 0}, "LC012": {"椰米白": 1021, "蔓野绿": 1020, "旭茵黄": 1012, "漫暮黑": 942, "夏日橙": 768, "雾蔓粉": 510, "霜奶白": 502, "映野灰": 271, "深蓝灰": 261, "幕酒红": 178, "雾林绿": 121, "雾面银": 110, "草茵绿": 105, "镜光银": 14, "沙杏咖": 9, "岚烟紫": 0, "霜灰蓝": 0}, "UV002": {"瓜瓜骑士": 128, "茄茄大厨": 84, "板栗长官": 69, "葡萄公爵": 2}};
+
+const TOP10 = [
+  {name:"蕉下男士气绒外套", cat:"秋冬保暖·户外防风·立领", sales:"690万", vol:"2.09万件", view:"1131万", img:"CL028"},
+  {name:"蕉下软壳气绒服", cat:"男士高弹防风·户外连帽外套", sales:"277万", vol:"6895件", view:"747万", img:"SOFT"},
+  {name:"蕉下连帽万粒绒外套", cat:"双面穿·一面挡风一面保暖", sales:"263万", vol:"8063件", view:"330万", img:"PM030"},
+  {name:"蕉下男士运动直筒裤", cat:"弹韧空气层·宽松直筒拉比例", sales:"233万", vol:"1.48万件", view:"1015万", img:"SF056"},
+  {name:"蕉下女士修身长袖T恤", cat:"精梳棉+氨纶·修身显瘦", sales:"214万", vol:"2.41万件", view:"1530万", img:"CT024"},
+  {name:"蕉下女士高弹廓形长裤", cat:"显瘦舒适·弯刀裤·遮肉显高", sales:"204万", vol:"7437件", view:"517万", img:"EL009"},
+  {name:"蕉下高弹摇粒绒打底衫", cat:"半拉链·保暖锁温·修身", sales:"182万", vol:"1.1万件", view:"605万", img:"PM002/PM006"},
+  {name:"蕉下女士宽松长袖T恤", cat:"40支精梳棉·柔软高弹百搭", sales:"179万", vol:"2.33万件", view:"1017万", img:"CT023"},
+  {name:"蕉下分区弹力气绒外套", cat:"气绒5.0分区保暖·立领防风", sales:"178万", vol:"4683件", view:"324万", img:"CL021"},
+  {name:"蕉下高弹摇粒绒打底衫·连帽", cat:"连帽双开拉链·户外叠穿", sales:"175万", vol:"8972件", view:"617万", img:"PM023"}
+];
+const SALES={"CT023":{"s":"179万","v":"2.33万件","n":1791167},"CT024":{"s":"214万","v":"2.41万件","n":2135476},"CT013":{"s":"157万","v":"2.45万件","n":1566975},"PM043":{"s":"151万","v":"1.02万件","n":1510367},"CL010":{"s":"136万","v":"7296件","n":1361014},"PM021":{"s":"19.7万","v":"1104件","n":196565},"PM023":{"s":"175万","v":"8972件","n":1753763},"PM007":{"s":"59.1万","v":"3159件","n":590711},"PM002/PM006":{"s":"182万","v":"1.1万件","n":1819195},"UV009":{"s":"21.7万","v":"963件","n":216517},"SF015":{"s":"95.6万","v":"6683件","n":955951},"SF027":{"s":"95.6万","v":"6683件","n":955951},"SF016":{"s":"85万","v":"5381件","n":849804},"SF028":{"s":"85万","v":"5381件","n":849804},"HW001":{"s":"84.3万","v":"4265件","n":843241},"PM028":{"s":"107万","v":"4610件","n":1070124},"PM030":{"s":"263万","v":"8063件","n":2625913},"PM037":{"s":"123万","v":"3498件","n":1232540},"PF007":{"s":"99万","v":"5523件","n":990466},"PF005":{"s":"47.5万","v":"2190件","n":475110},"PF004":{"s":"83.8万","v":"3299件","n":838070},"CL023":{"s":"105万","v":"3773件","n":1051500},"CL026":{"s":"132万","v":"3826件","n":1318470},"CL028":{"s":"690万","v":"2.09万件","n":6903844},"CL021":{"s":"178万","v":"4683件","n":1782330},"HD008":{"s":"47.8万","v":"1241件","n":478085},"HD012":{"s":"3260","v":"5件","n":3260},"EL033/EL035":{"s":"6.7万","v":"477件","n":67021},"EL012/EL015":{"s":"105万","v":"4839件","n":1054689},"EL009":{"s":"204万","v":"7437件","n":2040513},"EL011":{"s":"22.5万","v":"939件","n":224775},"HE024":{"s":"7.2万","v":"667件","n":72015},"WB007/WB006":{"s":"125万","v":"4266件","n":1253334},"SF056":{"s":"233万","v":"1.48万件","n":2334520},"PM020":{"s":"55.2万","v":"2320件","n":552128},"HW004":{"s":"109万","v":"2.05万件","n":1085335},"PM058":{"s":"8.6万","v":"908件","n":86167},"PM050":{"s":"63.7万","v":"9662件","n":637023},"PM054":{"s":"27.6万","v":"3845件","n":275750},"SF054":{"s":"7.2万","v":"1791件","n":72173},"EL041/EL039":{"s":"4.7万","v":"981件","n":47440},"LC010":{"s":"69.5万","v":"4544件","n":694947},"LC007":{"s":"42.1万","v":"3482件","n":421310},"LC014":{"s":"36.5万","v":"3132件","n":365135},"LC012":{"s":"6.1万","v":"777件","n":61082}};
+
+
+function renderTop10(){
+  const order = [1, 0, 2];
+  document.getElementById('podium').innerHTML = order.map((idx)=>{
+    const p = TOP10[idx];
+    const rank = idx + 1;
+    const img = IMGS[p.img] ? `<div class="pimg"><img src="${IMGS[p.img]}" alt="" decoding="async"></div>` : `<div class="pimg ph"></div>`;
+    return `<div class="po rank${rank}" data-code="${p.img}" onclick="jumpToCard('${p.img}')">
+      ${img}
+      <div class="medal">${rank}</div>
+      <div class="nm">${p.name}</div>
+      <div class="ct">${p.cat}</div>
+      <div class="bar"><b>${p.sales}</b><span>销量 ${p.vol} · 浏览 ${p.view}</span></div>
+    </div>`;
+  }).join('');
+  document.getElementById('rankList').innerHTML = TOP10.slice(3).map((p, i)=>{
+    const rank = i + 4;
+    const img = IMGS[p.img] ? `<span class="rimg"><img src="${IMGS[p.img]}" alt="" decoding="async"></span>` : `<span class="rimg ph"></span>`;
+    return `<div class="rank-item" data-code="${p.img}" onclick="jumpToCard('${p.img}')">
+      <span class="no">${String(rank).padStart(2,'0')}</span>
+      ${img}
+      <span class="rn">${p.name}</span>
+      <span class="rc">${p.cat}</span>
+      <span class="rs">${p.sales}<small>销量 ${p.vol}</small></span>
+    </div>`;
+  }).join('');
+}
+renderTop10();
+
+function getStock(code){
+  let total = 0;
+  for(const p of code.split('/')) total += (STOCK[p] || 0);
+  return total;
+}
+
+function colorStockHTML(code){
+  const merged = {};
+  for(const p of code.split('/')){
+    const c = STOCK_COLOR[p] || {};
+    for(const k in c) merged[k] = (merged[k] || 0) + c[k];
+  }
+  const entries = Object.entries(merged).filter(([c,v])=>v >= 50).sort((a,b)=>b[1]-a[1]);
+  const items = entries.map(([c,v])=>{
+    const wide = c.length > 6 ? ' wide' : '';
+    return `<div class="stock-item${wide}"><span class="color">${c}</span><span class="num">${v.toLocaleString()}</span></div>`;
+  }).join('');
+  const total = getStock(code);
+  return `<div class="card-stock"><div class="stock-title">颜色库存</div><div class="stock-list">${items || '<div style="font-size:11px;color:var(--sub)">暂无</div>'}</div><div class="stock-item stock-total"><span class="color">合计</span><span class="num">${total.toLocaleString()}</span></div></div>`;
+}
+
+const P=[
+{big:"打底",c:"长袖 T 恤",n:"CT023 女士宽松长袖T恤",op:"99",vp:"79",code:"CT023",sell:"40支精梳棉 + 30D氨纶，柔软高弹、透气不变形、不挑身材",
+ s:[["痛点直给", "0-5s「这件79的长袖，我劝你别只买一件」｜5-15s「你是不是也这样？买的棉T洗两三次就领子垮了、衣摆鼓包了，穿一个季度就得扔」｜15-35s「这件用40支超柔精梳棉，配上精密细坑编织，耐洗防变形，久穿跟新的一样；后领还做了加固保型，怎么拉扯都不垮」｜35-55s「再看弹力，加了30D高弹氨纶，四面弹不勒，转身抬胳膊都不束缚；整衣还是微孔透气的，叠穿也不会闷汗」｜55-75s「细节也不糊弄，无感缝线细密拷边，贴身不磨肤；宽松圆领版型，什么身材都能穿，怎么搭都不出错」｜75-85s「红糖棕、芋奶紫、漫暮黑、霜奶白四个颜色，79块，秋冬打底闭眼入」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「最近入秋，我每天早上出门抓的就是这件宽松长袖，随手一套就能走」｜8-25s「它就是那种不费脑子搭配的单品，配牛仔、配半裙、塞进风衣当打底都好看，通勤、周末、约会全能穿」｜25-50s「面料是40支精梳棉，贴身穿软软糯糯的，一整天不闷不黏；加了30D氨纶，活动起来有弹性，坐着办公也不勒」｜50-75s「最省心的是它耐洗，机洗几次都不变形不垮领，后领加固、无感缝线这些细节都在，穿一个季度还跟新的一样」｜75-85s「四个低饱和色很高级，不挑身材的圆领版型，谁穿谁舒服」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价99，今天视频价只要79」｜8-30s「先听我说完它值在哪：40支超柔精梳棉，精密细坑编织，耐洗不变形，久穿如新」｜30-55s「30D高弹氨纶，四面弹不束缚；整衣微孔透气，叠穿不闷汗；无感缝线贴身不磨，宽松圆领不挑身材」｜55-75s「就79块，别的品牌一件普通T都不止这个价，这件精梳棉还带弹力带透气，两件换着穿，冬天打底全包了」｜75-85s「库存不多，降温就涨价，现在拍最划算」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["南伊来了 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7687110483586370943/", "以限时优惠切入，推荐可男女同穿的基础长袖T恤。"], ["是小沫呀 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7693883937995721893/", "介绍蕉下基础长袖，标题未展开具体功能或穿搭场景。"], ["是小沫呀 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7693914983411755953/", "以基础长袖的价格优惠和限时抢购作为主要吸引点。"]]},
+{big:"打底",c:"长袖 T 恤",n:"CT024 女士修身长袖T恤",op:"99",vp:"79",code:"CT024",sell:"同款精梳棉+氨纶，修身版型更显瘦",
+ s:[["痛点直给", "0-5s「要显身材的姐妹看过来，这件修身长袖太能打了」｜5-15s「普通打底不是太松显壮，就是太紧勒得难受，这件修身款两个问题都解决了」｜15-35s「40支超柔精梳棉配精密细坑编织，水洗不变形不垮领，后领加固保型；加了30D氨纶，修身有弹力，贴着身材走但不勒肉」｜35-55s「整衣微孔透气，叠穿不闷汗，当内搭穿一天也清爽」｜55-75s「细节到位，无感缝线细密拷边，贴肤不磨；修身版型把腰线收出来，秋冬内搭显瘦首选」｜75-85s「霜奶白、红糖棕、云烟蓝、漫暮黑四色，79块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「上班想穿得显瘦又不想勒得难受，这件修身长袖正好」｜8-25s「里面单穿、外面套西装或大衣都利落，正肩收出直角肩，整个人看着都薄了一圈」｜25-50s「40支精梳棉贴身软糯，30D氨纶给足弹力，坐下、抬手都不勒；微孔透气，空调房闷一整天也不难受」｜50-75s「耐洗是我最满意的，机洗几次领子不垮、版型不变，后领加固和无感缝线这些小细节都很用心」｜75-85s「四个燕麦色系很高级，怎么搭都不出错」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价99，视频价79，修身打底显瘦神器」｜8-30s「40支超柔精梳棉，细坑编织耐洗不变形，后领加固不垮」｜30-55s「30D氨纶修身不勒肉，微孔透气叠穿不闷，无感缝线贴肤不磨」｜55-75s「79块，一件修身穿出好身材，通勤内搭两件起步，真的不贵」｜75-85s「库存有限，降温前抓紧」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小崔那点事儿🔥 · 销售额 25万–50万元 · 含多款", "https://www.douyin.com/share/video/7684474720046332111/", "终于找到；修身显瘦、长袖t恤、面料柔软舒适、长袖。"], ["Jun_君君 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7680177282127772642/", "连续两年回购了显瘦，版型面料都没得挑。"], ["胖佑麻麻 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7675349712996648805/", "一年四季都能穿的打底衫，每年的爆品，来晚了不是断色就是断码。"]]},
+{big:"打底",c:"长袖 T 恤",n:"CT013 弹力透气长袖T恤·男女同款",op:"99",vp:"79",code:"CT013",sell:"高支棉+6.4%氨纶，500+呼吸孔，挺阔透气不鼓包",
+ s:[["痛点直给", "0-5s「男女同款！79一件，我和我对象一人一件」｜5-15s「普通棉T穿两天就软塌、抬胳膊还鼓包留印，这件全都给你解决了」｜15-35s「高支棉花自带筋骨感，上身挺阔、肩型饱满，水洗还不易变形；加了6.4%氨纶，整衣有弹性，转身抬臂不鼓包不留印」｜35-55s「重点是透气，整衣500多个细密呼吸孔，360°双面透气，透气率约190mm/s，暴汗体质穿也干爽」｜55-75s「做工也讲究，肩部腋下裁剪留了余量，大幅活动零束缚；3D弹力领口，穿脱不卡脖子」｜75-85s「霜奶白、苏木棕、漫暮黑三色，79块，男女都能穿」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「周末和对象出门，不想刻意穿情侣装又想要点默契，就穿这件」｜8-25s「男女同款不挑人，他穿挺阔有型，我穿宽松舒服，走在一起莫名的搭」｜25-50s「高支棉自带筋骨，怎么动都不软塌；500+呼吸孔透气，逛一整天也不闷汗，暴汗也不黏」｜50-75s「6.4%氨纶给足弹力，抬胳膊、弯腰都不鼓包，3D领口穿脱不卡脖，细节都在」｜75-85s「三个中性色，单穿叠穿都干净利落」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价99，视频价79，男女同款的透气T」｜8-30s「高支棉挺阔不软塌，水洗不变形」｜30-55s「6.4%氨纶弹力不鼓包，500+呼吸孔360°透气，暴汗体质友好」｜55-75s「79一件，情侣装、家庭装、上班通勤全都能穿，两件才一百多」｜75-85s「库存不多，趁现在拍」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小夏家居 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7682924996347465023/", "男士长袖。"], ["瑶瑶喻（好运版） · 销售额 5万–10万元", "https://www.douyin.com/share/video/7674826490689700559/", "一年四季都能，舒服还便宜，薅两件换着穿。"], ["拜托了蕊哥 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7677940135414350331/", "一年四季单穿内搭，板正利索不臃肿，贴肤穿贼舒服。"]]},
+{big:"打底",c:"长袖 T 恤",n:"PM043 弹力摇粒绒长袖T恤·男女同款",op:"149",vp:"119",code:"PM043",sell:"双面摇粒绒+远红外升温，高弹吸湿抗静电",
+ s:[["痛点直给", "0-5s「入秋第一件内搭，别买普通卫衣了，试试这个双面摇粒绒」｜5-15s「普通卫衣又厚又闷，穿一天里面又黏又扎，这件完全不一样」｜15-35s「双面磨毛摇粒绒，蓄热升温持久暖，还带远红外升温科技，一穿即暖，把身体热量反射回皮肤，越穿越暖」｜35-55s「弹性也拉满，203.4%的横向伸长率，弹力小圆领配双加压封边，超弹不卡勒」｜55-75s「吸湿透气同时在线，透气率140mm/s、吸水率571%，出点汗也干爽；整衣还抗静电，穿脱不炸毛」｜75-85s「落肩版型休闲不呆板，生巧棕、漫暮黑、奶杏白三色，119块男女同款」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「最近早上骑车通勤有点凉，这件摇粒绒贴身穿，暖得刚刚好」｜8-25s「它不厚，当打底单穿都行，外面套外套也不臃肿，男生女生都能穿」｜25-50s「双面摇粒绒锁温，还带远红外，越穿越暖；落肩版型休闲，颜色是那种耐看的秋冬色」｜50-75s「最舒服的是它吸汗快，571%吸水率，出点汗不黏身；抗静电，脱的时候不会劈里啪啦炸毛」｜75-85s「119一件，入秋换季刚需，男女同款」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价149，视频价119，双面摇粒绒打底」｜8-30s「双面磨毛摇粒绒蓄热，远红外升温一穿即暖」｜30-55s「203.4%高弹不卡勒，吸水571%干爽，抗静电不炸毛」｜55-75s「119块，比普通卫衣暖还比它轻，男女同款一件穿三季」｜75-85s「降温在即，趁早囤」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["彭彭带娃不迷糊 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7690475325700659426/", "男士打底衫、打底衫、男士穿搭。"], ["彭彭带娃不迷糊 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7690191486914313715/", "保暖又不臃肿的；男士打底衫、男士摇粒绒、男士卫衣、男士内搭。"], ["小宇麻麻 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7670362998268283627/", "蕉下男女同款的摇粒绒长袖T，这个链接超划算，单穿打底都好看啊。"]]},
+{big:"打底",c:"长袖 T 恤",n:"CL010 男士气绒保暖长袖T恤·圆领",op:"249",vp:"",code:"CL010",sell:"气绒5.0三层锁温，轻薄保暖抗湿冷",
+ s:[["痛点直给", "0-5s「男生的保暖内搭，就选气绒，轻还不臃肿」｜5-15s「给老公买过羽绒内搭的都知道，又厚又闷还难洗，这件气绒解决了」｜15-35s「填充升级气绒5.0，三层蓄热锁温结构，轻薄但保暖，专门抗湿冷」｜35-55s「多层弹力系统，腋下拼接弹力罗纹，活动自在，伸展不紧绷」｜55-75s「高透气内层速干排湿，贴肤干爽；还带5A抑菌，穿一天也安心」｜75-85s「沁柔白、石墨灰、映野灰四色，M到XXXL，圆领百搭」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「给老公的秋冬内搭，他的要求就俩：暖和、别像球」｜8-25s「这件气绒长袖T正好，贴身穿轻得几乎没感觉，外面套衬衫卫衣都不显胖」｜25-50s「气绒5.0三层锁温，抗湿冷，南方那种湿冷天也能扛；内层速干，出点汗不贴不黏」｜50-75s「腋下拼接弹力罗纹，抬手开车都不绷；5A抑菌，穿一天没异味」｜75-85s「圆领百搭，通勤户外都能穿」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，男士保暖内搭一步到位」｜8-30s「气绒5.0三层锁温，轻薄保暖抗湿冷」｜30-55s「高弹腋下罗纹不紧绷，内层速干，5A抑菌」｜55-75s「给家里男士囤一件，冬天不冻，还比羽绒内搭好洗不臃肿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["发际线男神 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7696025215315085029/", "气绒长袖比保暖衣更有版型穿着更好看，平常单穿一件就已经很保暖了。"], ["井俊义 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7582482584291183931/", "现在已经开始断色断码了 有码数的抓紧了。"], ["好物 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7545852739265367356/", "蕉下气绒打底、保暖不臃肿、内搭外穿都好看、男生一件过冬的内搭。"]]},
+{big:"打底",c:"摇粒绒打底",n:"PM021 高弹摇粒绒打底衫·立领双开拉链",op:"249",vp:"199",code:"PM021",sell:"双面磨毛摇粒绒+双开拉链，高弹控温、吸汗511%",
+ s:[["痛点直给", "0-5s「秋冬通勤打底，就买这种能自己控温的」｜5-15s「进地铁热、出地铁冷，普通打底不是闷就是冷，这件双开拉链直接解决」｜15-35s「双面磨毛摇粒绒，蓄热升温持久暖；吸汗能力爆表，511%的吸汗率，透气300mm/s，干爽抗湿冷」｜35-55s「高弹扩容升级，360°伸展零束缚，拼接扩容结构抬手不拉扯，细密弹力缝线穿脱不紧绷」｜55-75s「双开拉链版型，冷了就拉上保暖、热了就拉开透气，灵活控温；立领护颈，修身塑形显腿长」｜75-85s「红糖棕、幻影灰、银叶灰、椰米白四色，199块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「入秋通勤，我每天里面穿的就是这件，地铁冷气、室外冷风都能扛」｜8-25s「它是那种很贴心的打底，双开拉链想透就透、想暖就暖，通勤路上温差大也不怕」｜25-50s「双面磨毛摇粒绒贴身穿软暖，吸汗511%，出点汗马上吸走，不黏不湿冷」｜50-75s「高弹不勒，坐一天、抬手拿东西都自在；立领护住脖子，修身版型外面叠外套也不臃肿」｜75-85s「四个颜色都耐看，通勤百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价199，双开拉链摇粒绒打底」｜8-30s「双面磨毛蓄热升温，吸汗511%、透气300mm/s」｜30-55s「高弹扩容360°不束缚，双开拉链控温，立领护颈修身」｜55-75s「199块，一件顶两件，秋冬通勤主力打底，趁降温前囤」｜75-85s「库存不多」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["超级肉夹馍 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7683453540899732453/", "蕉下秋冬万能打底衫，活动价超划算，包好看的。"], ["豆豆妈爱推荐（蕉下优选 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7685435236699671850/", "一件拉链打底衫，日常出门更利落。"], ["星星妈爱分享 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7699491512032213475/", "显瘦穿搭、打底衫、摇粒绒外套、基础版穿搭。"]]},
+{big:"打底",c:"摇粒绒打底",n:"PM023 高弹摇粒绒打底衫·连帽双开拉链",op:"249",vp:"209",code:"PM023",sell:"连帽+双开拉链，双面摇粒绒，户外叠穿不闷",
+ s:[["痛点直给", "0-5s「连帽摇粒绒打底，户外叠穿的神」｜5-15s「户外一冷一热最难穿衣服，这件连帽双开拉链，把保暖和透气都给你了」｜15-35s「双面磨毛摇粒绒加倍暖，远红外升温科技一穿即暖；立体中空纤维聚气锁温，持久保暖」｜35-55s「高弹扩容升级，360°伸展零束缚，腋下拼接抬手不拉扯，弹力缝线下摆不紧绷」｜55-75s「透气率300mm/s，叠穿不闷热；双开拉链拉上防风保暖、拉开舒适透气，灵活调温」｜75-85s「松木灰、漫暮黑、云烟蓝、沁葡紫四色，209块，户外内搭外穿都行」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「周末去爬山，里面穿它、外面套冲锋衣，暖还不闷」｜8-25s「连帽护住脖子后颈，风大也不往里钻；爬热了把双开拉链拉开透气，冷了拉上保暖」｜25-50s「双面摇粒绒越穿越暖，远红外升温，山顶风大也不慌」｜50-75s「腋下拼接扩容，抬手攀爬不拉扯；无骨缝线贴身穿不磨肉，叠穿也不臃肿」｜75-85s「颜色耐脏又好看，户外通勤都能穿」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价209，连帽双开拉链摇粒绒」｜8-30s「双面磨毛远红外升温，高弹不拉扯，叠穿不闷」｜30-55s「连帽防风、双开拉链控温、无骨缝线亲肤」｜55-75s「209块，户外内搭一步到位，一件顶普通打底两件」｜75-85s「降温前抓紧」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["Sst（熊妹妹） · 销售额 10万–25万元", "https://www.douyin.com/share/video/7681171200697845614/", "真的太好穿啦，卡码拍大。"], ["昊妈🔥 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7699051105321402803/", "好搭又可外穿的打底、显瘦外套、外穿内搭都好看、长袖上衣、有效显瘦穿搭。"], ["Sst（熊妹妹） · 销售额 5万–10万元", "https://www.douyin.com/share/video/7680437735718642394/", "今日运动穿搭、女生日常运动穿搭、显瘦运动长袖、好搭又可外穿的打底。"]]},
+{big:"打底",c:"摇粒绒打底",n:"PM007 高弹摇粒绒打底衫·双开拉链",op:"249",vp:"179",code:"PM007",sell:"双面磨毛摇粒绒+双开拉链，高弹塑形",
+ s:[["痛点直给", "0-5s「这件摇粒绒，我整个冬天都焊在身上」｜5-15s「冬天打底最怕又厚又勒，这件又暖又显瘦，穿了就不想脱」｜15-35s「双面磨毛摇粒绒，蓄热升温持久暖；爆吸汗511%，透气300mm/s，吸汗排湿干爽抗湿冷」｜35-55s「高弹扩容升级，360°伸展零束缚，拼接扩容不拉扯，弹力缝线穿脱不紧绷」｜55-75s「双开拉链灵活控温，修身塑形显腿长，日常百搭更显瘦；超薄柔软拉链无骨缝线，平整缝合不磨肉」｜75-85s「幻影灰、银叶灰、沁葡紫、椰米白四色，179块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「冬天打底穿它，再叠外套也不臃肿，还显瘦」｜8-25s「双面摇粒绒贴身穿暖而不闷，双开拉链冷热随调，办公室空调房也不闷汗」｜25-50s「吸汗511%，出点汗立刻干爽，不湿冷不黏身」｜50-75s「修身版型把腰线收出来，无骨缝线不磨肉，坐一天也舒服」｜75-85s「四个灰调色，百搭又高级」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价179，双开拉链摇粒绒打底」｜8-30s「双面磨毛持久暖，吸汗511%干爽」｜30-55s「高弹360°不束缚，双开拉链控温，修身显瘦」｜55-75s「179块，整个冬天就靠这一件，比羽绒内搭轻便还好洗」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7555524011771366714/", "中暖款单穿，高暖款可当外套～，好评无数。"], ["茉莉佳 · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7569894549213121713/", "还得是蕉下大品牌的摇粒绒外套，上身又保暖又好看。"], ["是小沫呀 · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7562878680609443131/", "蕉下暖和又显瘦的双拉链打底。"]]},
+{big:"打底",c:"摇粒绒打底",n:"PM002/PM006 高弹摇粒绒打底衫·半拉链",op:"229",vp:"159/169",code:"PM002/PM006",sell:"半拉链控温，中暖PM002/高暖PM006，双面磨毛",
+ s:[["痛点直给", "0-5s「半拉链打底，一件能穿三季」｜5-15s「从初秋单穿到深冬当内搭，这件半拉链摇粒绒全能接住」｜15-35s「双面磨毛摇粒绒，蓄热升温持久暖，远红外升温设计双效升温；更细密的绒粒，超蓄暖超轻量」｜35-55s「高弹扩容升级，360°伸展零束缚，腋下抬手不拉扯，波浪弹力缝线下摆不紧绷」｜55-75s「488%暴吸汗，透气280mm/s，叠穿不闷热；半拉链设计拉开透气、拉上保暖」｜75-85s「中暖PM002适合初秋、高暖PM006适合深冬，159起，单穿显瘦叠穿不臃肿」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「一件打底从秋天穿到冬天，就是这件半拉链」｜8-25s「半拉链想透就透、想暖就暖，早晚温差大的天气最好用」｜25-50s「双面摇粒绒软糯亲肤，远红外越穿越暖；单穿修身，叠穿也不臃肿」｜50-75s「488%吸汗，运动通勤都不黏身；无骨缝线不磨肉」｜75-85s「中暖高暖两款，按你城市温度选就行」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价229，视频价159起，半拉链摇粒绒」｜8-30s「双面磨毛远红外升温，488%吸汗」｜30-55s「高弹不磨，半拉链控温，单穿叠穿都行」｜55-75s「159起，三季都能穿的打底，性价比拉满」｜75-85s「降温前囤，库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["超级肉夹馍 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7684146509889486203/", "蕉下秋季半高领打底衫，现在的链接超划算、ootd、耐穿不腻基础款、梨形身材穿搭。"], ["超级肉夹馍 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7682666897954866810/", "蕉下秋冬万能打底衫，活动价超划算，包好看的。"], ["饺公主hahaha · 销售额 10万–25万元 · 名称匹配", "https://www.douyin.com/share/video/7674628473672497835/", "百搭又显瘦的摇粒绒打底衫，还得是蕉下。"]]},{big:"打底",c:"摇粒绒打底",n:"UV009 摇粒绒防晒衣·宽松款",op:"249",vp:"224",code:"UV009",sell:"摇粒绒换季外套+UPF99%，防晒保暖一件",
+ s:[["痛点直给", "0-5s「秋天也能防晒？这件摇粒绒防晒衣做到了」｜5-15s「别以为秋天没紫外线，其实晒黑晒老一点不含糊，这件保暖防晒一件全包」｜15-35s「双面磨毛工艺持久保暖，立体中空纤维聚气锁温；摇粒绒细腻磨毛绒粒感，贴肤软暖」｜35-55s「重点是防晒，紫外线阻隔率大于99%，头、面、颈、手全防护，多次水洗不减防晒力」｜55-75s「整衣软弹升级，弹力缝线活动不勒，暖阁微孔散热，透气390mm/s；拉链上拉面部防凉风，指洞设计袖口少钻风」｜75-85s「修身/宽松两版型，五个颜色，224块，一件顶两件」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「秋天紫外线也猛，这件防晒衣保暖防晒一次搞定」｜8-25s「摇粒绒保暖锁温，早晚凉了套上就暖；UPF99%防晒，中午太阳大也不怕晒」｜25-50s「拉链上拉还挡面部凉风，指洞设计袖口不钻风，户外通勤都合适」｜50-75s「修身宽松两版型任选，弹力缝线活动不勒，透气不闷」｜75-85s「五个颜色，防晒保暖两不误」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价224，防晒保暖一件」｜8-30s「摇粒绒锁温+UPF99%防晒」｜30-55s「头面颈手全防护，水洗不减防晒力」｜55-75s「224块，一件顶两件，秋冬防晒两不误」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7668512091300693413/", "显瘦遮肉慵懒风、反季、显高显瘦显腿长。"], ["胖佑麻麻 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7670458117680162481/", "趁着反季的力度还在赶紧薅，又轻又软又透气，一年能穿三季。"], ["小猴子耶耶 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7684216196879544554/", "又到了穿蕉下摇粒绒外套的季节啦。"]]},
+{big:"打底",c:"肌底/羊毛打底",n:"SF015 轻薄肌底打底衫·亨利领",op:"179",vp:"114",code:"SF015",sell:"双纤氧磨毛+7%氨纶，亨利领控温塑形",
+ s:[["痛点直给", "0-5s「打底衫别乱买，选这种久洗不变形的」｜5-15s「普通打底洗几次就松垮变形，贴肤还磨，这件肌底打底直接拉满」｜15-35s「双纤氧磨毛面料，超细双组纤维细腻磨毛，久穿久洗依旧柔软」｜35-55s「高密度编织工艺，久穿不易变形，整衣高透气性，保暖不闷汗；肩袖、侧缝高摩擦区用无骨缝线平整缝合，贴肤0磨」｜55-75s「亨利领修身版型，正肩剪裁肩颈更纤薄，解开透气、扣上保暖；弧形下摆隐藏小肚子，7%高弹氨纶修身不束身」｜75-85s「红糖棕、极夜蓝、浅月灰三色，114块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「上班想穿得精致又舒服，这件亨利领打底正合适」｜8-25s「正肩剪裁显得肩颈很薄，弧形下摆把小肚子收起来，整个人利落很多」｜25-50s「双纤氧磨毛面料亲肤柔软，贴身穿一整天都不磨；亨利领可开可扣，空调房冷了扣上、热了解开」｜50-75s「高密编织久洗不变形，无骨缝线不磨肤，穿一个季度还跟新的一样」｜75-85s「三个颜色都高级，通勤叠穿首选」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价179，视频价114，亨利领肌底打底」｜8-30s「双纤氧磨毛柔软，久洗不变形」｜30-55s「高弹不束身，亨利领控温，正肩显瘦」｜55-75s「114块，通勤内搭闭眼入，两件换着穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7678913132241199784/", "毫不费力显身材穿搭、有效显瘦穿搭、早秋新款。"], ["胖佑麻麻 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7672757875144630769/", "显瘦穿搭妥妥拿捏、毫不费力显身材穿搭、上身显瘦不紧绷、显身材穿搭。"], ["是小沫呀 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7564025556368608570/", "蕉下显瘦又暖和的亨利衫。"]]},
+{big:"打底",c:"肌底/羊毛打底",n:"SF027 肌底打底衫·亨利领初暖",op:"179",vp:"144",code:"SF027",sell:"远红外升温高支腈纶，薄薄一件更保暖",
+ s:[["痛点直给", "0-5s「起风就冷？这件薄打底能自己发热」｜5-15s「入秋早晚温差大，穿厚了闷、穿薄了冷，这件远红外打底薄薄一件就暖」｜15-35s「采用能远红外升温的高支腈纶，把身体热量反射回来，薄薄一件实现更保暖的效果」｜35-55s「高密度编织工艺，久穿久洗不易变形，整衣高透气性，保暖不闷汗」｜55-75s「肩袖侧缝无骨缝线平整缝合，贴肤0磨；亨利领正肩剪裁，解开透气、扣上保暖，弧形下摆隐藏小肚子」｜75-85s「原露米、浅雾粉、漫暮黑三色，144块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「深秋早晚冷，这件薄打底贴身自己就暖，出门不用裹成球」｜8-25s「远红外高支腈纶，看着薄但保暖在线，正肩版型叠外套也利落」｜25-50s「高密编织不透风又透气，不闷汗；亨利领可开可扣，温差大也好调节」｜50-75s「久洗不变形，无骨缝线不磨，穿一个季度还软」｜75-85s「三个燕麦色系，通勤百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价179，视频价144，远红外保暖打底」｜8-30s「高支腈纶自发热，薄而暖」｜30-55s「高密编织不变形，亨利领控温，正肩显瘦」｜55-75s「144块，薄暖不臃肿，秋冬内搭刚需」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["Sst（熊妹妹） · 销售额 10万–25万元", "https://www.douyin.com/share/video/7681146798204289190/", "运动穿搭分享、今日运动穿搭、简约高级感穿搭、显瘦运动长袖。"], ["胖佑麻麻 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7678913132241199784/", "毫不费力显身材穿搭、有效显瘦穿搭、早秋新款。"], ["胖佑麻麻 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7672757875144630769/", "显瘦穿搭妥妥拿捏、毫不费力显身材穿搭、上身显瘦不紧绷、显身材穿搭。"]]},
+{big:"打底",c:"肌底/羊毛打底",n:"SF016 轻薄肌底打底衫·POLO领",op:"179",vp:"149",code:"SF016",sell:"POLO领全开合控温，透气率≥467mm/s",
+ s:[["痛点直给", "0-5s「POLO领打底，单穿叠穿都省心」｜5-15s「普通打底领子不是闷就是松，这件POLO领全开合，想透就透、想暖就暖」｜15-35s「双纤氧磨毛面料，超细双组纤维细腻磨毛，久穿久洗依旧柔软」｜35-55s「添加7%氨纶，高弹不紧绷，腋下拼接扩容结构抬手不拉扯，下摆弹力缝线穿脱不紧绷」｜55-75s「肩袖侧缝无骨缝线平整缝合，贴肤不磨；透气率≥467mm/s，保暖不闷汗，还有远红外升温科技，起风不冷」｜75-85s「云烟蓝、椰米白、漫暮黑三色，149块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤叠穿西装，里面搭这件POLO打底，利落又舒服」｜8-25s「POLO领可开可扣，正式场合扣上、放松时解开，一件搞定不同场景」｜25-50s「磨毛面料亲肤柔软，透气好不闷汗；腋下扩容抬手不卡，办公坐一天也自在」｜50-75s「久洗不变形，无骨缝线不磨，穿一个季度还跟新的一样」｜75-85s「三个颜色都百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价179，视频价149，POLO领打底」｜8-30s「磨毛柔软，高弹不勒」｜30-55s「透气不闷汗，POLO领控温，贴肤不磨」｜55-75s「149块，单穿叠穿都值，通勤内搭两件起步」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7673793531791033445/", "显高显瘦显腿长、梨形身材穿搭、早秋穿搭。"], ["李阿妹 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7677621304669181800/", "高质又平价；好搭又可外穿的打底、通勤穿搭参考、衣服测评、舒适感超强的打底衫、百搭基础款yyds。"], ["茉莉佳 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7559911598023920955/", "还真得大品牌的版型剪裁，上身巨显瘦又高级。"]]},
+{big:"打底",c:"肌底/羊毛打底",n:"SF028 肌底打底衫·POLO领初暖",op:"199",vp:"159",code:"SF028",sell:"远红外升温+半拉链控温，叠穿暖而不闷",
+ s:[["痛点直给", "0-5s「半拉链POLO打底，秋冬天冷加衣的答案」｜5-15s「冬天叠穿最怕闷，这件半拉链打底，拉开透气、拉上保暖，随你调」｜15-35s「双纤氧磨毛面料，久穿久洗依旧柔软」｜35-55s「采用能远红外升温的高支腈纶，薄薄一件更保暖；高密编织+7%氨纶，修身不束身」｜55-75s「肩袖侧缝无骨缝线贴肤0磨；半拉链设计灵活控温，拉开透气、系上保暖」｜75-85s「原露米、浅雾粉、漫暮黑三色，159块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「入冬叠穿，这件半拉链打底又暖又有层次」｜8-25s「远红外薄暖，叠在卫衣或大衣里不臃肿，半拉链还能调节领口的松紧」｜25-50s「磨毛面料亲肤，高弹不勒；POLO领+半拉链，正装休闲都能搭」｜50-75s「久洗不变形，无骨缝线不磨，冬天内搭主力」｜75-85s「三个燕麦色系，叠穿神器」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价199，视频价159，远红外半拉链打底」｜8-30s「薄而暖，远红外升温」｜30-55s「半拉链控温，修身不束身」｜55-75s「159块，叠穿神器，冬天内搭两件起步」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7673793531791033445/", "显高显瘦显腿长、梨形身材穿搭、早秋穿搭。"], ["李阿妹 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7677621304669181800/", "高质又平价；好搭又可外穿的打底、通勤穿搭参考、衣服测评、舒适感超强的打底衫、百搭基础款yyds。"], ["茉莉佳 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7559911598023920955/", "还真得大品牌的版型剪裁，上身巨显瘦又高级。"]]},
+{big:"打底",c:"肌底/羊毛打底",n:"HW001 羊毛混纺打底衫·翻领中暖",op:"249",vp:"199",code:"HW001",sell:"美利奴羊毛混纺，贴身暖糯不扎、3A抑菌",
+ s:[["痛点直给", "0-5s「秋冬打底，还是得有一件真羊毛」｜5-15s「普通化纤打底穿一天又闷又有味，这件美利奴羊毛打底，暖还不扎」｜15-35s「美利奴羊毛混纺，精准纤维配比，贴身暖糯不扎肤；莱赛尔和高弹氨纶，舒柔超软糯；羊毛天然蓬松卷曲，轻盈锁温」｜35-55s「吸湿透气不闷汗，吸水316%、透气1438mm/s，抗湿冷不闷热；3A级抑菌，减少汗湿异味」｜55-75s「4.9倍高弹力，四向高弹活动灵活不紧绷；抗起球耐磨，省心耐穿；翻领修身版型，立显腰线塑形显瘦」｜75-85s「极夜蓝、海盐灰两色，199块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「办公室空调一吹就冷，这件羊毛打底贴身保暖，还不出汗味」｜8-25s「美利奴羊毛暖糯不扎，3A抑菌穿一天也没异味，正装里搭也利落」｜25-50s「透气1438mm/s，不闷不湿；4.9倍高弹，坐着办公、抬手都自在」｜50-75s「翻领修身显腰线，抗起球耐穿，一件能穿好几年」｜75-85s「两个高级色，通勤百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价199，真羊毛打底」｜8-30s「美利奴羊毛暖糯，3A抑菌」｜30-55s「4.9倍高弹，抗起球，翻领显瘦」｜55-75s「199块，一件真羊毛打底值回票价，秋冬内搭闭眼入」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["夏温妈妈 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7693084184805419185/", "太值得入手了 显瘦又保暖 做工好棒 版型也是很有设计感。"], ["周周很会买 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7680079656419224507/", "新款的莱赛尔羊毛打底衫，好舒服好显瘦，单穿好看。"], ["夏温妈妈 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7693857735582640369/", "这个真显气质，很高级很大牌 面料糯叽叽的 好舒服，强烈推荐。"]]},
+
+
+{big:"外套",c:"万粒绒外套",n:"PM028 轻量万粒绒外套·常规中暖",op:"229",vp:"179",code:"PM028",sell:"毫米级细密短绒+远红外，超蓄暖超轻量",
+ s:[["痛点直给", "0-5s「秋冬外套，轻到没存在感，暖到不想脱」｜5-15s「普通外套又重又臃肿，这件万粒绒外套，轻得跟没穿一样，暖得不想脱」｜15-35s「毫米级细密短绒，立体中空纤维储存更多空气，保温率56.5%；自带远红外发热科技，高效持续保暖」｜35-55s「万粒绒搭载云感摇粒工艺，软糯亲肤；轻量百搭，适配秋冬不同温度」｜55-75s「微导流呼吸孔，轻量保暖不闷汗；四面高弹不束缚，微袖口不勒微收阻风，下摆收拢背不漏风，全方位锁温」｜75-85s「栗灰棕、沁葡紫、红糖棕、银沙米、深竹绿五色，179块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤搭大衣、周末单穿，这件轻量外套一衣两穿」｜8-25s「轻到没重量，暖到不想脱，软糯亲肤不闷汗，穿上就不想换」｜25-50s「万粒绒毫米级短绒锁温，远红外越穿越暖；外穿利落修饰体型，内搭保暖显层次」｜50-75s「四面高弹活动自在，袖口下摆都做了锁温，冷风灌不进来」｜75-85s「五个秋冬色都高级，立领显腿长」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价229，视频价179，轻量万粒绒外套」｜8-30s「远红外升温，保温率56.5%」｜30-55s「四面高弹不束缚，微孔透气不闷」｜55-75s「179块，轻暖外套闭眼入，外穿内搭都好看」｜75-85s「降温前囤，库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["茉莉i · 销售额 1万–2.5万元 · 名称匹配", "https://www.douyin.com/share/video/7680961897882494107/", "外套、通勤穿搭、休闲穿搭、摇粒绒外套。"], ["蕉下服装官方旗舰店直播间 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7696791976506559807/", "库存告急，蕉下万粒绒多色可选，喜欢颜色抓紧。"], ["万晞麻麻 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7683346332186519650/", "蕉下万粒绒外套；实用主义穿搭推荐、平价穿搭、好穿的摇粒绒外套、无法拒绝的百搭套装、蕉下万粒绒外套。"]]},
+{big:"外套",c:"万粒绒外套",n:"PM030 连帽万粒绒外套·双面穿中暖",op:"429",vp:"349",code:"PM030",sell:"双面穿，一面挡风一面保暖，一件顶三件",
+ s:[["痛点直给", "0-5s「一件外套两面穿，秋冬通勤户外全搞定」｜5-15s「出门看天穿衣服最头疼，这件双面穿外套，一面挡风一面保暖，不用纠结」｜15-35s「万粒绒毫米微孔蓬松轻盈蓄热升温，另一面御风壳超韧性紧密编织，强力防风雨寒」｜35-55s「一件顶三件：外穿绒面活动干爽，外穿壳面御风挡雨，中层叠穿不显臃肿」｜55-75s「插肩削薄肩背弱化宽肩，直身剪裁挺括利落，叠穿无压不卡肘；袖口微收阻风，下摆可调节抽绳，翻折带盖口袋防掉物」｜75-85s「冷月白、极夜蓝、红糖棕、沁葡紫四个配色，349块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「一件外套两种穿法，下雨翻壳面、日常翻绒面，通勤户外一件就够」｜8-25s「万粒绒那面软糯保暖，御风壳那面防风防雨，天气怎么变都不慌」｜25-50s「插肩版型不显肩宽，直身挺括，叠穿也不臃肿，活动不卡肘」｜50-75s「袖口下摆都做了防风，口袋翻折带盖，小东西不容易掉」｜75-85s「一件顶三件，行李箱都省一半空间」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价429，视频价349，双面穿一件顶三件」｜8-30s「御风壳防风防雨，万粒绒蓄热保暖」｜30-55s「双面切换，通勤户外一件通吃」｜55-75s「349块，相当于三件外套的钱，还省收纳空间」｜75-85s「库存有限，降温前抓紧」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小艾麻麻（蕉下优选） · 销售额 25万–50万元", "https://www.douyin.com/share/video/7685836616606158122/", "秋冬搭配提前想好，连帽万粒绒双面穿搭配长裤轻松出门。"], ["小艾麻麻（蕉下优选） · 销售额 10万–25万元", "https://www.douyin.com/share/video/7685836615935151423/", "买外套先看实穿度，连帽万粒绒双面都能穿日常搭配更丰富。"], ["蕉下官方旗舰店直播间 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7696362766361300243/", "秋季上新｜蕉下双面万粒绒外套，蓬松升温，立领护住脖颈不灌风。"]]},
+{big:"外套",c:"万粒绒外套",n:"PM037 男士连帽万粒绒外套·双面穿",op:"469",vp:"389",code:"PM037",sell:"双面防风保暖锁温，弹护针织防风防泼水",
+ s:[["痛点直给", "0-5s「男生的双面穿外套，防风又保暖」｜5-15s「男生出门最怕纠结穿什么，这件双面穿外套，一面防风一面保暖，随手一穿就对」｜15-35s「一面弹护针织面料，防风、防泼水、耐磨、耐沾污，户外无惧刮风小雨」｜35-55s「另一面万粒绒毫米级细密蓬松短绒，储存更多空气，保温率≥50%，自带远红外发热科技」｜55-75s「双层面料形成静止空气锁温层，锁住身体热量，双倍保暖；连帽双面穿，通勤户外两用」｜75-85s「深咖灰、砾岩咖、漫暮黑三个配色，389块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「给男朋友的双面外套，防风面通勤、绒面周末，一件穿出两种感觉」｜8-25s「针织面防风防泼水，骑车通勤不钻风；绒面锁温保暖，周末约会也帅」｜25-50s「双层面料锁温，保温率50%以上，降温也不怕」｜50-75s「连帽双面切换，挺括不臃肿，怎么穿都有型」｜75-85s「三个颜色都百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价469，视频价389，男士双面穿外套」｜8-30s「防风防泼水，万粒绒锁温」｜30-55s「双面切换，一件顶两件」｜55-75s「389块，给家里男士安排上，通勤户外一步到位」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["彭彭带娃不迷糊 · 销售额 25万–50万元 · 名称匹配", "https://www.douyin.com/share/video/7685964116519267776/", "男士外套、双面外套、秋冬穿搭、男生穿搭。"], ["一一好胖丫（反季刀一刀） · 销售额 10万–25万元 · 名称匹配", "https://www.douyin.com/share/video/7693192155896040739/", "一面万粒绒保暖，一面防风防水软壳，一衣两穿。"], ["一一好胖丫（反季刀一刀） · 销售额 10万–25万元 · 名称匹配", "https://www.douyin.com/share/video/7684907390151478528/", "今年秋冬天就给老公安排它。"]]},
+{big:"外套",c:"白绒系列",n:"PF007 轻量白绒马甲·中暖",op:"219",vp:"179",code:"PF007",sell:"白绒锁温≈800蓬羽绒，一件穿三季",
+ s:[["痛点直给", "0-5s「比羽绒轻，比马甲暖，一件穿三季」｜5-15s「换季最尴尬，穿外套热、不穿又冷，这件白绒马甲就是答案」｜15-35s「细密绒丝通过多重工艺蓬松成球、立体交织，形成一体蓬松的蜂巢形态，聚热锁温，白绒锁温≈800蓬羽绒，轻盈保暖抗湿冷」｜35-55s「户外阴雨天也不怕，白绒纤维丝不易吸湿，湿冷天气仍保暖；面料细丝密纺，防风防泼水耐沾污」｜55-75s「机洗不易结团，清洁不费劲；春轻便收纳随时加温，夏外穿搭配防风雨寒，冬内搭叠穿加倍保暖，一件穿三季」｜75-85s「漫暮黑、蓝烟灰、紫菀花、原露米四色，179块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「早秋外穿、深秋内搭，这件白绒马甲一件管三季」｜8-25s「白绒锁温≈800蓬羽绒，轻到没负担，穿上暖乎乎的」｜25-50s「抗湿冷，阴雨天也不塌；防风防泼水，户外小雨也不怕」｜50-75s「机洗不结团，打理省心；叠穿不臃肿，怎么搭都有型」｜75-85s「四个耐看色，三季都在穿」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价219，视频价179，白绒马甲一件穿三季」｜8-30s「锁温≈800蓬，轻暖抗湿冷」｜30-55s「防风防泼水，机洗不结团」｜55-75s「179块，三季都在穿，性价比拉满」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["家有小玉米 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7690613338573264613/", "围绕秋冬马甲叠穿，突出保暖、好搭配和一件穿三季的实用性。"], ["一一好胖丫（反季刀一刀） · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7682007340073094451/", "以优惠入手切入，主打白绒马甲可反复机洗、保持蓬松保暖。"], ["胖佑麻麻 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7697147277014956530/", "从怕冷人群的秋冬需求切入，强调保暖马甲的实用性与显瘦搭配。"]]},
+{big:"外套",c:"白绒系列",n:"PF005 轻量白绒外套·中暖",op:"249",vp:"169",code:"PF005",sell:"白绒≈800蓬，正肩立体有型，防泼水可机洗",
+ s:[["痛点直给", "0-5s「轻到能塞进包里的保暖外套」｜5-15s「普通棉服又重又占地，这件白绒外套轻到能塞包里，冷了拿出来就穿」｜15-35s「高密聚热巢结构，细密绒丝蓬松成球立体交织，白绒锁温≈800蓬羽绒，轻盈保暖抗湿冷」｜35-55s「户外阴雨天出行无阻，白绒纤维不易吸湿，湿冷天仍保暖；面料细丝密纺，防风防泼水耐沾污」｜55-75s「机洗不易结团，清洁不费劲；宽松正肩版型立体有型，宽距衔缝视觉显瘦，弹力下摆宽松及臀」｜75-85s「加绒防风立领脖颈不凉，弹力防风袖口防冷风，五色，169块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「出差塞包里也不占地方，冷了套上就暖，这件白绒外套太适合通勤了」｜8-25s「白绒锁温≈800蓬，轻暖不压身；正肩版型立体显瘦，穿起来利落」｜25-50s「防风防泼水，下点小雨也不怕；加绒立领护住脖子，袖口防冷风」｜50-75s「机洗不结团，打理省心，出差旅行都能带」｜75-85s「五个颜色，轻暖外套首选」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249，视频价169，轻量白绒外套」｜8-30s「锁温≈800蓬，防风防泼水」｜30-55s「正肩显瘦，机洗不结团」｜55-75s「169块，轻暖外套性价比之选，一件过冬」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["阿🌟呀 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7697269890323746666/", "当我已经想好降温穿什么 蕉下黑科技白绒外套PF005又轻又保暖，自研白绒热熔工艺，锁温对标800蓬羽绒。"], ["阿🌟呀 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7684981055342785722/", "国庆出游穿搭｜蕉下白绒服轻暖出片两不误 准备国庆出门的姐妹，蕉下PF005这件白绒外套一定要备上，轻薄不臃肿。"], ["婉婉呀（蕉下破价专场） · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7697197844725304618/", "千呼万唤终于降价了，昨天199现在降价了，冬天想买排骨服赶紧。"]]},
+{big:"外套",c:"白绒系列",n:"PF004 蓬松白绒外套·立领高暖",op:"349",vp:"284",code:"PF004",sell:"高暖白绒≈800蓬，立领防风，机洗不结团",
+ s:[["痛点直给", "0-5s「北方过冬，一件白绒外套就够」｜5-15s「北方冬天羽绒服又厚又难洗，这件白绒外套高暖轻便还能机洗」｜15-35s「细密绒丝蓬松成球立体交织，白绒锁温≈800蓬羽绒，蓬松持久暖，轻盈抗湿冷」｜35-55s「户外阴雨天也不怕，白绒纤维不易吸湿，面料防风防泼水耐沾污，机洗不易结团」｜55-75s「宽松正肩版型立体有型，宽距衔缝视觉显瘦；加绒防风立领脖颈不凉，弹力防风袖口防冷风灌入」｜75-85s「漫暮黑、月牙蓝、秋岩棕、原露米四色，284块，高暖过冬」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「北方冬天，这件高暖白绒外套穿身上就不冷了」｜8-25s「白绒锁温≈800蓬，蓬松暖，加绒立领挡住脖子冷风，袖口也收紧不钻风」｜25-50s「正肩版型显瘦不臃肿，抗湿冷，下雪天也不怕」｜50-75s「机洗不结团，打理省心，一件过冬」｜75-85s「四个颜色，高暖过冬首选」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价349，视频价284，高暖白绒外套」｜8-30s「锁温≈800蓬，立领防风」｜30-55s「抗湿冷，机洗不结团」｜55-75s「284块，过冬一件就够，比羽绒好打理」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["蕉下户外官方旗舰店直播间 · 销售额 10万–25万元 · 名称匹配", "https://www.douyin.com/share/video/7696406536435911974/", "线下门店同款，线上同款同厂同品质。"], ["蕉下户外官方旗舰店直播间 · 销售额 5万–10万元 · 名称匹配", "https://www.douyin.com/share/video/7699578319129316649/", "羽绒服洗一次塌一次，这件白绒洗完直接回弹。"], ["豆豆妈爱推荐（蕉下优选 · 销售额 2.5万–5万元 · 名称匹配", "https://www.douyin.com/share/video/7683421716453903659/", "秋冬外套要防风也要锁温，这件白绒上身很安心。"]]},
+{big:"外套",c:"气绒外套",n:"CL023 气绒外套·圆领中暖",op:"349",vp:"279",code:"CL023",sell:"锁温超800蓬羽绒，火山岩升温8.3℃，可机洗",
+ s:[["痛点直给", "0-5s「比羽绒还暖，还比羽绒轻，关键能机洗」｜5-15s「羽绒服暖但难洗、洗了还结团，这件气绒外套把这几个痛点全解决了」｜15-35s「3层保温瓶结构，锁温大于800蓬羽绒；含三维火山岩粒子，比羽绒更能升温8.3°C」｜35-55s「户外阴雨天比羽绒更抗湿冷，比羽绒更轻薄，叠穿不显臃肿」｜55-75s「耐磨防风防泼水，更好打理放心机洗，洗后不易结团仍蓬松保暖；抗静电穿脱不粘头发」｜75-85s「原露米、漫暮黑两色，279块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「嫌羽绒服臃肿又难洗？试试这件气绒外套」｜8-25s「气绒锁温超800蓬羽绒，火山岩升温8.3℃，又轻又暖」｜25-50s「圆领百搭，里面叠穿打底、外面套大衣都行，不显臃肿」｜50-75s「机洗省心，洗了不结团，抗静电不粘头发，打理起来太轻松」｜75-85s「两个颜色，暖还不臃肿」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价349，视频价279，气绒比羽绒更暖更轻」｜8-30s「火山岩升温8.3℃，锁温超800蓬」｜30-55s「抗湿冷，防风防泼水，可机洗」｜55-75s「279块，暖还不臃肿，还不用送干洗店」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["昊妈🔥 · 销售额 25万–50万元", "https://www.douyin.com/share/video/7695314128961249946/", "实穿主义的冬季厚外套、棉服外套、厚外套、外套穿搭、秋冬穿搭。"], ["胖佑麻麻 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7678987757184106234/", "简约高级感穿搭、通勤穿搭参考、又轻又暖的外套。"], ["昊妈🔥 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7696819214066574810/", "轻盈保暖、棉服外套、秋冬外套、秋冬穿搭。"]]},
+{big:"外套",c:"气绒外套",n:"CL026 气绒外套·夹克款中暖",op:"449",vp:"359",code:"CL026",sell:"120g气绒4.0，飞行员夹克版型，防风防泼水",
+ s:[["痛点直给", "0-5s「飞行员夹克+气绒，通勤保暖还显瘦」｜5-15s「普通夹克不保暖，羽绒夹克又臃肿，这件气绒飞行员夹克又帅又暖」｜15-35s「120g AirBloom气绒4.0，3层保温瓶结构，三维火山岩粒子升温7℃，锁温≈800蓬羽绒服」｜35-55s「外层御风壳面料耐磨防风防泼水，防风立领温暖至脖颈，罗纹袖口避免冷气入侵，弹力下摆防冷风倒灌」｜55-75s「比羽绒更轻薄，叠穿不臃肿，压缩率70%；抑菌消臭可机洗，户外久穿无负担」｜75-85s「宽松飞行员夹克微弧廓形，插肩弯刀袖，漫暮黑、薄灰绿、秋岩棕、蓝烟灰四色，359块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤骑车、周末逛街，这件飞行员夹克又帅又暖」｜8-25s「气绒锁温，御风壳防风防泼水，骑车不钻风，轻到不压身」｜25-50s「微弧廓形显瘦，插肩袖活动自如，怎么动都不紧绷」｜50-75s「口袋绒感内里触肤不冰，机洗省心」｜75-85s「四个颜色，保暖夹克一步到位」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价449，视频价359，气绒飞行员夹克」｜8-30s「120g气绒锁温≈800蓬，防风防泼水」｜30-55s「比羽绒轻，压缩率70%，显瘦不臃肿」｜55-75s「359块，保暖夹克一步到位，通勤户外两用」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["饺公主hahaha · 销售额 10万–25万元 · 名称匹配", "https://www.douyin.com/share/video/7688341600221339761/", "洋气松弛还特别暖和的气绒夹克，不愧是蕉下。"], ["Decy戴 · 销售额 5万–10万元 · 名称匹配", "https://www.douyin.com/share/video/7690972950447060645/", "蕉下保暖气绒秋冬户外外套，好暖还轻便。"], ["丁然后 · 销售额 5万–10万元 · 名称匹配", "https://www.douyin.com/share/video/7559780951879077178/", "夹克羽绒服真的轻便保暖又好看。"]]},
+{big:"外套",c:"气绒外套",n:"CL028 男士气绒外套·夹克款中暖",op:"479",vp:"349",code:"CL028",sell:"气绒4.0三层锁温，防风防泼水，通勤挺括",
+ s:[["痛点直给", "0-5s「给老公挑外套的姐妹，这件他穿上绝对不脱」｜5-15s「男人冬天出门，要么冻得缩着脖子，要么裹得跟个球一样，又臃肿又难看」｜15-35s「这件气绒夹克直接解决——轻到你上手都不觉得有重量，但一上身暖得跟小太阳似的，骑车、走路，冷风钻都钻不进来」｜35-55s「还特别好打理，防泼水面料，下雨溅点水、沾点灰，拿纸一擦就干净。脏了直接扔洗衣机，洗完照样蓬松不塌」｜55-75s「版型是飞行员夹克那味儿，穿上显肩宽、显精神，上班、见客户、周末约会，怎么穿都不掉价」｜75-85s「四个颜色都好搭，到手349，比他那些又重又难洗的羽绒服划算多了」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「我老公现在通勤就穿这件，早上骑车出门前必抓它」｜8-25s「之前他冬天都是里三层外三层，现在一件气绒夹克就够，轻便又暖和，办公室一脱也不占地方」｜25-50s「气绒锁温真的强，南方那种湿冷天也扛得住；防泼水面料，赶上下点小雨也不慌，进屋擦擦就干」｜50-75s「最省心的是能机洗，洗几次都不结团不塌，我都不用操心他衣服怎么洗」｜75-85s「四个颜色，深色耐脏浅色精神，给家里男士安排上准没错」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价479，今天视频价只要349，男士气绒夹克」｜8-30s「气绒锁温，比羽绒轻、比棉服暖，一件过冬不臃肿」｜30-55s「防泼水、能机洗、版型挺括，通勤户外都能穿」｜55-75s「349到手，给他买件好的，这个冬天就靠它了，两件换着穿更省心」｜75-85s「库存不多了，降温前抓紧囤」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["彭彭带娃不迷糊 · 销售额 50万–100万元 · 名称匹配", "https://www.douyin.com/share/video/7686303308818009507/", "男士外套、男生穿搭、秋冬穿搭、保暖又好看。"], ["阿杰测评说(蕉下控) · 销售额 50万–100万元 · 名称匹配", "https://www.douyin.com/share/video/7675957790753574186/", "蕉下上新福利专享价，男士气绒夹克外套，比臃肿羽绒好看n倍。"], ["增增大冒险 · 销售额 25万–50万元 · 名称匹配", "https://www.douyin.com/share/video/7553479113974680895/", "蕉下会搞啊，板正利落好打理的同时还非常保暖，南方冬天单穿足够。"]]},
+{big:"外套",c:"气绒外套",n:"CL021 分区弹力气绒外套·立领中暖",op:"379",vp:"349",code:"CL021",sell:"气绒5.0分区保暖，御风壳防风防泼水",
+ s:[["痛点直给", "0-5s「分区气绒外套，核心保暖、活动区透气不闷」｜5-15s「普通保暖外套不是闷就是活动受限，这件分区气绒把保暖和透气都安排明白了」｜15-35s「填充薄暖气绒5.0，三层锁温结构，秋冬通勤持续蓄暖，户外活动轻薄不压身，保暖抗湿冷」｜35-55s「灵动暖结构精准分区，核心区锁温保暖，公园遛弯心区稳稳锁温，活动区高弹无束缚」｜55-75s「御风壳面料防风防泼水耐脏污；宽松立领夹克插肩袖，包容身型更显瘦」｜75-85s「紫菀花、漫暮黑、蓝烟灰、薄灰绿四色，349块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤核心保暖、抬手活动透气，这件分区外套懂穿搭」｜8-25s「气绒5.0锁温，活动区高弹不束缚，御风壳防风」｜25-50s「立领夹克显瘦，包容身形，通勤休闲自在有型」｜50-75s「大身防风防泼水耐脏，活动区速干吸湿排汗，久穿不闷」｜75-85s「四个颜色，通勤户外都合适」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价379，视频价349，分区气绒外套」｜8-30s「气绒5.0三层锁温，防风防泼水」｜30-55s「分区保暖，活动无束缚」｜55-75s「349块，通勤户外一件通吃」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7685344654460176369/", "有效显瘦穿搭、耐穿不腻基础款、实用主义穿搭推荐、早秋穿搭。"], ["胖佑麻麻 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7692001125827130297/", "隐藏连帽设计太有小巧思了，又实用又好看。"], ["胖佑麻麻 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7684215963331506789/", "耐穿不腻基础款、实用主义穿搭推荐、保暖不臃肿、早秋穿搭。"]]},
+{big:"外套",c:"羽绒服",n:"HD008 分区拼接羽绒服·中暖",op:"499",vp:"",code:"HD008",sell:"镀釉羽绒3.0，90%绒子800蓬，分区保暖不闷",
+ s:[["痛点直给", "0-5s「羽绒服也能分区保暖，核心锁温肩臂透气」｜5-15s「普通羽绒服要么臃肿要么闷，这件分区拼接羽绒服，核心暖、肩臂透气，活动还不闷」｜15-35s「镀釉羽绒3.0，90%绒子含量、800蓬大绒朵，支持1000分钟长效拒水抗湿；同等填充量保暖效率较600蓬提升33%」｜35-55s「人体分区拼接结构，核心区域填充高品级羽绒，肩臂搭配透气绒感针织，躯干恒温带动全身暖，肩臂透气不闷」｜55-75s「袖部拼接高弹面料，肩臂拉伸无阻力，叠穿不紧绷，抬臂运动舒展自在」｜75-85s「漫暮黑、奶杏白、茶岩棕、松露棕四色」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「冬天穿羽绒服又闷又臃肿？这件分区羽绒服懂你」｜8-25s「核心区充高绒锁温，肩臂透气针织拼接，活动不闷、抬手不紧绷」｜25-50s「镀釉羽绒防潮抗湿，暖得更久；躯干恒温带动全身暖意」｜50-75s「袖部高弹拼接，室内外、叠穿都舒适自在」｜75-85s「四个颜色，分区保暖羽绒服」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价499，镀釉羽绒3.0分区保暖」｜8-30s「90%绒子800蓬，1000分钟拒水」｜30-55s「分区不闷，袖部高弹不紧绷」｜55-75s「暖而不闷，性价比羽绒服」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["蕉下服饰官方旗舰店直播间 · 销售额 2.5万–5万元 · 名称匹配", "https://www.douyin.com/share/video/7696732784009809206/", "通勤氛围感羽绒，不挑年龄风格，基础好搭。"], ["鲈鱼公主 · 销售额 2.5万–5万元 · 名称匹配", "https://www.douyin.com/share/video/7690571897993871525/", "蕉下这件羽绒服能穿半年啊。"], ["小艾麻麻（蕉下优选） · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7692418287870790931/", "出门不想费心搭配，拼接羽绒服简单搭长裤就好看。"]]},
+{big:"外套",c:"羽绒服",n:"HD012 软壳弹力羽绒服·连帽极暖",op:"999",vp:"799",code:"HD012",sell:"全件高弹+镀釉羽绒3.0，冲锋级防风雨雪",
+ s:[["痛点直给", "0-5s「999的极暖羽绒服，直播间799，全件弹力不束缚」｜5-15s「普通羽绒服穿着像绑着，这件全件弹力，活动自如还不漏风」｜15-35s「4层高弹面料+活线工艺+弹力活性充绒，实现羽绒全件高弹；相比常规线迹+20%活量，配合特殊弹力缝线拉伸无绷感」｜35-55s「镀釉羽绒3.0，90%绒子、800蓬大绒朵，保暖效率比600蓬高33%，1000分钟强拒水抗湿」｜55-75s「冲锋级强防护，软壳40D超韧纤维紧密编织，4级防泼水，整衣强防风≤50mm/s，隔绝雨雪冷风穿不透」｜75-85s「古木棕、茶岩棕、奶杏白、漫暮黑四色，799块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「深冬雨雪天，这件极暖羽绒服挡风挡雨还不紧绷」｜8-25s「全件高弹活动自如，镀釉羽绒暖，软壳隔绝雨雪，冬天出门有它就够」｜25-50s「连帽周全防护，四面立裁修身有型，穿起来不臃肿」｜50-75s「1000分钟拒水，雪天也不怕；耐磨耐脏，久穿也新」｜75-85s「四个颜色，深冬极暖首选」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价999，视频价799，极暖软壳羽绒服」｜8-30s「全件高弹，镀釉羽绒3.0」｜30-55s「冲锋级防风，隔绝雨雪」｜55-75s「799块，深冬一件到顶，比同款羽绒服性价比高」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["十三粥 · 销售额 2500–5000元 · 名称匹配", "https://www.douyin.com/share/video/7695377625045009279/", "拒绝冬日面包服的臃肿感，蕉下这款弹力羽绒服太懂女生了。"]]},
+{big:"裤装",c:"裤装",n:"EL033/EL035 高弹乳胶腰直筒裤·加绒",op:"179/229",vp:"139/184",code:"EL033/EL035",sell:"3D乳胶腰头回弹不勒，微压收腹显腿直",
+ s:[["痛点直给", "0-5s「加绒直筒裤，乳胶腰头，吃饱不勒腰」｜5-15s「普通加绒裤腰头又硬又勒，坐一天勒出印子，这件乳胶腰头彻底解决」｜15-35s「3D乳胶腰三层软弹芯，内置天然乳胶，11.5cm纵向高腰、1.7倍横向扩展，弯腰随动压缩、后仰顺势拉伸，360°动态贴合」｜35-55s「腰臀腿分区塑型，微压收腹修饰身形，海鸥线视觉提臀，直筒版型遮肉显腿直」｜55-75s「随型弹混纺面料，71.9%锦纶+28.1%氨纶，软糯高弹，212.6%横向伸长率；特研低档弧度行走不卡裆」｜75-85s「加绒款内层磨毛升温锁暖，漫暮黑、浅月青两色，139起」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤坐一天、吃完饭也不勒腰，这条直筒裤真香」｜8-25s「3D乳胶腰自动扩容不勒，久坐不勒肚，弯腰不漏空」｜25-50s「加绒锁暖，直筒版型显腿直，海鸥线提臀遮肉显瘦」｜50-75s「锦纶氨纶混纺软糯高弹，走路不卡裆，一整天都舒服」｜75-85s「两个颜色，通勤显瘦神器」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价179起，视频价139起，乳胶腰加绒直筒裤」｜8-30s「3D乳胶腰不勒，加绒锁暖」｜30-55s「直筒显腿直，微压收腹」｜55-75s「139起，通勤显瘦神器，两条换着穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小艾麻麻（蕉下优选） · 销售额 1万–2.5万元 · 名称匹配", "https://www.douyin.com/share/video/7691368401490545961/", "常穿的款值得备，直筒裤配乳胶腰设计，换季衣柜先看看。"], ["小艾麻麻（蕉下优选） · 销售额 1万–2.5万元 · 名称匹配", "https://www.douyin.com/share/video/7694723260503575827/", "别只看颜色，直筒裤的乳胶腰设计，选衣时也值得关注。"], ["小艾麻麻（蕉下优选） · 销售额 1万–2.5万元 · 名称匹配", "https://www.douyin.com/share/video/7694715236774858022/", "秋冬搭配先做准备，直筒裤配乳胶腰设计，看看适合哪一套。"]]},
+{big:"裤装",c:"裤装",n:"EL012/EL015 高弹微喇裤·四季/高暖",op:"249/349",vp:"199/279",code:"EL012/EL015",sell:"微喇版型重塑线条，3D动态腰防勒",
+ s:[["痛点直给", "0-5s「微喇裤一穿，小腿肌肉直接消失」｜5-15s「小腿粗、假胯宽、腿不直，一条微喇裤全给你修饰了」｜15-35s「立体修饰微喇版型，加宽高腰线拉长下半身，科学遮胯不显假胯宽，立体提臀压线打造饱满臀型，柔和微喇裤脚修饰小腿肌肉」｜35-55s「3D动态腰，随动扩容更防勒，腰头环腰腹立体构型，高密罗纹优异拉伸，响应活动时身体变化」｜55-75s「内里贴肤暖绒，够柔暖高能暖护，抬腿空间四向展裆底」｜75-85s「秋岩棕、漫暮黑两色，四季199/高暖279」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「约会穿微喇裤，腿又直又长，气场直接拉满」｜8-25s「高腰拉长下半身，裤脚修饰小腿，提臀遮胯，整个人比例都变好了」｜25-50s「3D动态腰不勒，久坐也不勒肚，四季高暖任选」｜50-75s「高暖款内里贴肤暖绒，冬天穿也暖和」｜75-85s「两个颜色，显瘦显高」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价249起，视频价199起，高弹微喇裤」｜8-30s「微喇重塑线条，3D动态腰防勒」｜30-55s「高暖加绒，遮胯显腿长」｜55-75s「199起，显瘦显高神器」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["茉莉佳 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7690796353182761957/", "蕉下暴走微喇裤显瘦显腿长，随便搭配都超舒服又百搭。"], ["可可乐. · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7690392357737646564/", "微喇裤太显瘦了，加绒的穿着也不显胖，高弹显瘦又舒服。"], ["茉莉佳 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7691678323035221371/", "微喇裤、显瘦显高显腿长、梨形身材穿搭、秋冬穿搭。"]]},
+{big:"裤装",c:"裤装",n:"SF009 超柔高弹直筒裤",op:"299",vp:"239",code:"SF009",sell:"莫代尔面料+3D动态腰，垂顺修饰腿型",
+ s:[["痛点直给", "0-5s「这条直筒裤，垂顺到像开了腿长滤镜」｜5-15s「腿不直、假胯宽、小肚子，一条垂顺直筒裤全给你遮住」｜15-35s「垂顺直筒版型，平整前腹一片式加宽收腰贴合收腹，拉直腿线流畅腰胯线，修饰不同腿型不显假胯宽，更显臀线不显扁平」｜35-55s「3D动态腰随动扩容更防勒，侧腰V型高腰裁片扩容8cm，6.8cm加高裁片不空腰，不掉档动态跟随不走位」｜55-75s「空气莫代尔面料触肤0蹭痒，裤腿亲肤缝线穿着无感，2.1倍高弹自由伸展不束缚，暴汗科技纤维干爽舒适」｜75-85s「秋岩棕、烟纱灰、原露米三色，239块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「上班穿它，坐一天也不皱不勒，腿还显得直」｜8-25s「莫代尔垂顺亲肤，3D动态腰扩容不勒，提臀遮胯，整个人显得很利落」｜25-50s「一片式收腰收小肚子，裤腿亲肤缝线不磨腿，久坐也舒服」｜50-75s「暴汗纤维干爽，通勤一整天清爽」｜75-85s「三个颜色，通勤显瘦神裤」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价299，视频价239，超柔高弹直筒裤」｜8-30s「莫代尔垂顺，3D动态腰不勒」｜30-55s「2.1倍高弹，提臀遮胯」｜55-75s「239块，通勤显瘦神裤，两条换着穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[]},
+{big:"裤装",c:"裤装",n:"EL009 高弹廓形长裤",op:"299",vp:"269",code:"EL009",sell:"弯刀裤型藏肉显高，3D动态腰不勒",
+ s:[["痛点直给", "0-5s「弯刀裤，臀显翘、腿显瘦、腰显细」｜5-15s「大腿粗、臀扁平、肚子有肉，这条弯刀裤全给你修饰了」｜15-35s「弯刀裤型下松上紧藏肉显瘦，爆腰显细，腿显瘦，后臀分割线显臀翘」｜35-55s「3D动态腰户外暴走不紧勒，侧后腰一片式高腰裁片扩容+9cm，不掉档动态跟随不走位，整裤2.3倍高弹伸长率134%，回复率88.8%，跨步从容」｜55-75s「三明治空气层面料结合三层立体编织，触感舒适阻挡寒风，耐磨耐穿挺阔易打理」｜75-85s「羽花云絮、漫暮黑、秋岩棕三色，269块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「周末户外暴走，这条弯刀裤藏肉又自在」｜8-25s「下松上紧藏肉，臀翘腿瘦，空气层挡风」｜25-50s「3D动态腰不勒，跨步从容，暴走也不掉档」｜50-75s「三明治空气层挺阔耐磨，户外通勤都合适」｜75-85s「三个颜色，户外通勤两用」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价299，视频价269，高弹弯刀裤」｜8-30s「弯刀裤型藏肉显高，3D动态腰不勒」｜30-55s「空气层挡风，跨步从容」｜55-75s「269块，户外通勤都合适」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小艾麻麻（蕉下优选） · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7691367864988634387/", "秋冬搭配先做准备，廓形长裤配廓形版型，看看适合哪一套。"], ["安良妈妈 · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7684828471877236928/", "蕉下出品每一件都非常不错 做工细节用料扎实 裤型更是没的说。"], ["小艾麻麻（蕉下优选） · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7693220746411248938/", "买衣服先看实穿度，廓形长裤有高弹设计，日常搭配多一个选择。"]]},
+{big:"裤装",c:"裤装",n:"EL011 弹力宽松廓形长裤·灯芯绒",op:"299",vp:"239",code:"EL011",sell:"灯芯绒复古垂顺，南瓜裤型美化腰臀比",
+ s:[["痛点直给", "0-5s「灯芯绒+南瓜裤型，复古氛围感直接拉满」｜5-15s「想穿出秋冬复古感，又怕显胖显矮，这条灯芯绒南瓜裤全解决」｜15-35s「甄选优质竖坑条灯芯绒面料，细密竖纹肌理自带复古氛围感，触感软糯亲肤，垂感在线不软塌」｜35-55s「南瓜裤型腰臀比一件美化，纵向拉长腿部比例显腿长，后臀分割线显臀翘，上紧下松显腰细」｜55-75s「3D动态腰随动扩容防勒，侧腰V型高弹裁片加宽腰头扩容+6.5cm，抗起球科技短毛密织，双侧口袋轻松储物」｜75-85s「秋岩棕、烟纱灰、原露米三色，239块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「秋冬复古穿搭，就靠这条灯芯绒裤出片」｜8-25s「竖纹灯芯绒软糯垂顺，南瓜裤型显腰细腿长，随便搭都出氛围感」｜25-50s「3D动态腰不勒，久坐也舒服」｜50-75s「抗起球，双侧口袋方便，垂感在线不塌」｜75-85s「三个颜色，秋冬氛围感神裤」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价299，视频价239，灯芯绒廓形裤」｜8-30s「灯芯绒复古垂顺，3D动态腰不勒」｜30-55s「南瓜裤型显腰细，抗起球」｜55-75s「239块，秋冬氛围感神裤」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["茉莉佳 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7688238385126929765/", "秋季穿搭、显瘦穿搭、轻松拿捏慵懒风穿搭、梨形身材。"], ["茉莉佳 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7684102375027978937/", "早秋穿搭、显瘦穿搭、轻松拿捏慵懒风穿搭、梨形身材。"], ["婷婷姐 · 销售额 5000–1万元", "https://www.douyin.com/share/video/7692951236233286842/", "蕉下灯芯绒阔腿裤 真的是保暖的同时还巨显瘦 柔软又舒服。"]]},
+{big:"裤装",c:"裤装",n:"HE024 高弹乳胶腰打底裤·初暖",op:"139",vp:"109",code:"HE024",sell:"3D乳胶腰回弹不勒，加绒暖护，7A抑菌",
+ s:[["痛点直给", "0-5s「打底裤的腰头，终于不勒出印子了」｜5-15s「普通打底裤腰头勒出印子、久坐勒肚，这件乳胶腰打底裤彻底告别这个问题」｜15-35s「3D乳胶腰三层软弹芯，罗纹外层平整腰腹，乳胶夹层释压扩容，弹性里层贴合稳定，内置天然乳胶回弹更足，畅动不勒腰，久穿不留印」｜35-55s「360°动态贴合兼容各种姿态，久坐不勒肚、活动不束缚、弯腰不漏空；腰臀腿分区塑型，双线勾勒视觉提臀，微压收腹修饰身形」｜55-75s「内里贴肤加绒超暖护不寒腿，抗静电处理，添加氨基酸柔润亲肤，7A级抗菌贴身安心」｜75-85s「漫暮黑，109块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「冬天打底裤最怕勒腰，这条穿了跟没穿一样」｜8-25s「3D乳胶腰自动调节不勒，久坐不勒肚、弯腰不漏空」｜25-50s「加绒暖护，7A抑菌，氨基酸柔润亲肤」｜50-75s「腰臀腿分区塑型，显瘦不勒，一整天都舒服」｜75-85s「黑色百搭，冬天打底就靠它」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价139，视频价109，乳胶腰加绒打底裤」｜8-30s「3D乳胶腰不勒，加绒锁暖」｜30-55s「7A抑菌，氨基酸亲肤」｜55-75s「109块，冬天打底就靠它，两条换着穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小楚当妈（捡漏版） · 销售额 1万–2.5万元 · 含多款", "https://www.douyin.com/share/video/7698038026564535522/", "蕉下鲨鱼裤、蕉下秋冬新品上市、瑜伽裤穿搭。"], ["小楚当妈（捡漏版） · 销售额 5000–1万元 · 含多款", "https://www.douyin.com/share/video/7670188516018967690/", "超大弹力，很显瘦显腿长。"], ["小楚当妈（捡漏版） · 销售额 5000–1万元 · 含多款", "https://www.douyin.com/share/video/7696875004092393615/", "很服帖，高弹不卡不勒，不易掉档很显瘦。"]]},
+{big:"裤装",c:"裤装",n:"WB007/WB006 防泼水廓形长裤",op:"349/399",vp:"319起",code:"WB007/WB006",sell:"弯刀裤型+弹护梭织，防风防泼水耐磨",
+ s:[["痛点直给", "0-5s「能防泼水的廓形裤，秋冬通勤暴走都行」｜5-15s「下雨天通勤裤腿全湿、刮风冷得不行，这条防泼水廓形裤全解决」｜15-35s「弯刀裤型上身有型藏肉显瘦，腰胯线条流畅遮胯显腰细，四面廓形修饰腿部线条」｜35-55s「3D动态腰户外暴走不紧勒，压胶一体贴合，侧后腰一片式高腰裁片扩容+12cm，加宽腰头侧腰宽16cm，不掉档动态跟随」｜55-75s「弹护梭织面料，外层四向高弹，兼具防风防泼水耐磨抗污；1.2倍弹力四向展裆底，+1.5cm动态空间抬腿不拉扯」｜75-85s「银叶灰、苏木棕、漫暮黑三色，319起，高暖款更厚」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「下雨天通勤也不怕，这条防泼水裤又飒又暖」｜8-25s「弹护梭织防风防泼水，弯刀裤型遮胯显瘦」｜25-50s「3D动态腰不勒，暴走不掉档，抬腿不拉扯」｜50-75s「高暖款更厚，冬天穿也暖」｜75-85s「三个颜色，秋冬通勤神器」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价349起，视频价319起，防泼水廓形裤」｜8-30s「防风防泼水耐磨，弯刀裤型显瘦」｜30-55s「3D动态腰不勒，抬腿无束缚」｜55-75s「319起，秋冬通勤神器」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["胖佑麻麻 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7688729320589156729/", "终于出加绒版本了；百搭裤子、显高显瘦显腿长、梨形身材穿搭。"], ["晕晕和花花 · 销售额 10万–25万元 · 含多款", "https://www.douyin.com/share/video/7686481065606686618/", "蕉下高暖款加绒防泼水弯刀裤来活动啦，梨型身材闭眼入。"], ["可可乐. · 销售额 5万–10万元 · 含多款", "https://www.douyin.com/share/video/7681204171504999266/", "早秋穿搭、百搭裤子、弯刀裤。"]]},
+{big:"裤装",c:"裤装",n:"SF056 男士宽松运动直筒裤",op:"299",vp:"159",code:"SF056",sell:"弹韧空气层，不皱不软塌，宽松直筒拉比例",
+ s:[["痛点直给", "0-5s「男生的直筒裤，159块，四季好穿」｜5-15s「男生挑裤子最怕皱、怕软塌、怕勒，这条弹韧空气层直筒裤全解决」｜15-35s「弹韧空气层，动态有弹氨纶纤维发挥弹力少束缚，静态有型空气层面料厚实挺括，350g/m2高克重超大伸缩量收腰不勒」｜35-55s「不皱不软塌，亲肤少摩擦，贴肤面柔软细腻」｜55-75s「不挑腿型，宽松直筒拉长比例，后臀弧线视觉显高，侧缝前移更显腿直；两侧斜向口袋拿取方便，不挑季节四季好穿」｜75-85s「幻影灰、雾卡其两色，159块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「男生挑裤子最怕皱，这条直筒裤穿一天都挺括」｜8-25s「空气层挺括有型，宽松直筒显腿直，收腰不勒」｜25-50s「斜向口袋拿取方便，四季好搭」｜50-75s「亲肤少摩擦，坐一天也舒服」｜75-85s「两个颜色，四季通勤神裤」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价299，视频价159，男士运动直筒裤」｜8-30s「空气层挺括不皱，宽松直筒显腿直」｜30-55s「收腰不勒，四季好穿」｜55-75s「159块，四季通勤神裤，两条换着穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["彭彭带娃不迷糊 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7686803750841565864/", "休闲裤、男士穿搭、百搭神裤。"], ["小漫的生活美学日记（品牌折扣） · 销售额 10万–25万元", "https://www.douyin.com/share/video/7694757089054346522/", "超大弹力，耐磨防刮，挺阔有型。"], ["大冰的小幸福 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7697064243283184896/", "品牌男士直筒裤，上身不仅舒适，还很挺括有型。"]]},
+{big:"裤装",c:"裤装",n:"PM020 防风万粒绒直筒裤·高暖",op:"299",vp:"",code:"PM020",sell:"双层空气舱，外层冲锋防护+内层万粒绒锁温",
+ s:[["痛点直给", "0-5s「能挡风的内里绒裤，一条过冬」｜5-15s「冬天裤子要么薄得灌风、要么厚得臃肿，这条防风万粒绒裤一条解决」｜15-35s「双层空气舱结构，外层冲锋级防护防风，内层万粒绒蓬松锁温，轻盈保暖」｜35-55s「内外双弹力搭配动态扩容剪裁，活动自如不勒不绷」｜55-75s「直筒版型修饰腿型利落显腿长，通勤户外都能搭」｜75-85s「子墨灰、苏木棕、银叶灰三色」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「北方冬天出门，这条防风绒裤一条就够暖」｜8-25s「外层挡风、内层万粒绒锁温，直筒显腿长」｜25-50s「活动自如不勒，通勤户外都行」｜50-75s「双层空气舱，暖还不臃肿」｜75-85s「三个颜色，一条过冬」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价299，防风万粒绒直筒裤一条过冬」｜8-30s「外层冲锋防风，内层万粒绒锁温」｜30-55s「活动自如不勒」｜55-75s「一条顶两条，高暖过冬」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["晕晕和花花 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7695351977660139593/", "一条过冬，不用再穿秋裤了，蕉下万里绒直筒裤可比大棉裤舒服保暖太多了。"], ["晕晕和花花 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7690917954809335643/", "冬天怕冷的穿这一条就足够了。"], ["是苑苑呀 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7696135609832499195/", "新款大活动，防风又保暖，可以穿着过冬～日常户外都好好穿。"]]},
+{big:"其他",c:"帽子围巾",n:"HW004 纯羊毛保暖针织帽",op:"69",vp:"54",code:"HW004",sell:"100%绵羊毛，加长护耳，抗静电不炸毛",
+ s:[["痛点直给", "0-5s「54块的纯羊毛帽，护耳还抗静电」｜5-15s「普通帽子不是扎就是起静电炸毛，这顶纯羊毛帽又暖又不刺」｜15-35s「100%绵羊毛一体无缝针织，加长护耳设计从头顶暖到耳侧，轻柔包住头部和耳朵」｜35-55s「羊毛纤维天然卷曲形成空气保温囊，能动态调温自由收放热量」｜55-75s「严选细径绵羊毛，触肤柔少刺挠；弹力自适应头围久戴无勒感，撞色卷边修饰脸型，整帽抗静电脱戴不炸毛」｜75-85s「默咖米、默絮灰、砺石灰、焰萝红、紫栗棕五色，54块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「秋冬出门，一顶纯羊毛帽从头暖到耳朵」｜8-25s「羊毛天然蓄温，护耳设计，弹力不勒头」｜25-50s「撞色卷边修饰脸型，还不炸毛」｜50-75s「细径羊毛不扎，久戴不勒」｜75-85s「五个颜色，秋冬保暖刚需」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价69，视频价54，纯羊毛针织帽」｜8-30s「100%绵羊毛，护耳抗静电」｜30-55s「弹力不勒，撞色修饰脸型」｜55-75s「54块，秋冬保暖刚需，一顶过冬」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["溪红柿🍅 · 销售额 25万–50万元", "https://www.douyin.com/share/video/7689864277586808933/", "头大脸宽不会搞造型的都去整一顶这个冷帽，戴上时尚博主那味儿立马就出来了，贼洋气还显脸小。"], ["卢师傅 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7674089257666388593/", "蕉下绵羊毛的帽子 现在入便宜。"], ["雷小仙 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7692419233132622309/", "方圆脸不能没有冷帽；方圆脸帽子推荐、冷帽推荐、显脸小的帽子推荐、秋冬冷帽。"]]},
+{big:"其他",c:"帽子围巾",n:"DS566 运动防晒帽",op:"179",vp:"139",code:"DS566",sell:"原纱防晒，60g轻量，跑跳稳固不闷",
+ s:[["痛点直给", "0-5s「60g的防晒帽，轻到像没戴」｜5-15s「普通帽子戴久了勒头又闷，这顶60g防晒帽轻到没感觉，还防晒」｜15-35s「原纱防晒，洗后仍耐用的防晒，高透气面料全天运动无闷感」｜35-55s「运动帽围设计跑跳稳固不乱晃，轻量卸风迎风不易翻，加宽护额贴合额头曲线，超吸网眼汗带暴汗速吸不粘腻」｜55-75s「整帽轻至60g零压佩戴不压发型，升级超塑工艺帽檐挺括不易皱，洗后不软塌，魔术贴尾带灵活调节，平压弯弧帽檐视角显脸小」｜75-85s「石墨灰、霜奶黄、海棠紫、漫暮黑四色，139块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「跑步登山，这顶防晒帽轻到忘记它的存在」｜8-25s「60g零压，跑跳不晃，网眼汗带暴汗速吸」｜25-50s「原纱防晒，水洗还不减防晒力」｜50-75s「帽檐显脸小，水洗还不软塌」｜75-85s「四个颜色，运动防晒两不误」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价179，视频价139，运动防晒帽」｜8-30s「原纱防晒，60g轻量」｜30-55s「跑跳稳固，显脸小」｜55-75s「139块，运动防晒两不误」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[]},
+{big:"其他",c:"帽子围巾",n:"PM058 轻量柔绒保暖围巾",op:"129",vp:"99",code:"PM058",sell:"中空纱配羊毛，约164g比手机轻，远红外升温",
+ s:[["痛点直给", "0-5s「一条比手机还轻的围巾，围上就暖」｜5-15s「普通围巾又厚又扎，这条轻量柔绒围巾，轻到没重量，围上就暖还不刺」｜15-35s「中空纱配比羊毛，棉羊毛与中空纱精心配比，达到保暖和轻盈的平衡，约0.8mm轻盈薄暖，整件约164g比苹果手机更轻」｜35-55s「远红外升温发热，整件保温率≥30%，水洗后依旧保暖」｜55-75s「超细纱羽化拉绒工艺，纱线表面形成细密毛羽层锁住空气；48支色纺羊毛亲肤绒，超细纱线减少刺痒感，羊绒般细腻」｜75-85s「极夜尘迹、霜银尘迹、海棠织云、流岚织云、落日尘迹五色，99块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「秋冬通勤，一条轻围巾塞包里不占地方，冷了围上就暖」｜8-25s「中空纱配羊毛，轻暖锁温，触感羊绒般细腻」｜25-50s「远红外升温，水洗也不减保暖」｜50-75s「五个雾面色，怎么搭都高级」｜75-85s「比手机还轻，通勤必备」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价129，视频价99，轻量柔绒围巾」｜8-30s「中空纱+羊毛轻暖，远红外升温」｜30-55s「羊绒般细腻，水洗仍暖」｜55-75s「99块，比手机还轻，秋冬配饰刚需」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["小诺妈 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7694686299995717361/", "搭配极简风、舒适生活必备单品、舒适保暖、百搭围巾。"], ["佑一天呀 · 销售额 5000–1万元", "https://www.douyin.com/share/video/7694116060933007013/", "超软糯 简约又大气 做披肩都足够大。"], ["佑一天呀 · 销售额 5000–1万元", "https://www.douyin.com/share/video/7696346537785766393/", "轻巧又保暖 可围可披肩 超实用。"]]},
+{big:"其他",c:"口罩",n:"PM050 薄绒护眼角保暖口罩",op:"69",vp:"44/件",code:"PM050",sell:"UPF50+护眼角防晒，玻尿酸保湿薄绒",
+ s:[["痛点直给", "0-5s「44块的口罩，防晒又保暖，还带玻尿酸」｜5-15s「秋冬戴口罩，脸被风吹得干疼、眼周还容易长晒斑，这个口罩全照顾到了」｜15-35s「原纱防晒UPF50+，紫外线阻隔率≥99%，水洗不减防护力；整体呵护至眼角，防眼周晒斑干纹」｜35-55s「脸颊双层保暖面料，温暖包裹双倍暖护；96F超细绒面料纱线更蓬松，触感如羊绒般细腻，抵抗风冷刺激」｜55-75s「面料嵌入保湿微胶囊玻尿酸，包裹缓释，耐40次水洗依旧有效保湿」｜75-85s「深花灰、蓝烟灰、乌杏棕、薄烟紫四色，44元/件」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「秋冬骑车通勤，这个口罩防晒保暖还保湿」｜8-25s「UPF50+护到眼周，脸颊薄绒保暖，玻尿酸保湿」｜25-50s「96F超细绒细腻不扎，双层保暖」｜50-75s「久戴不闷，眼周不长晒斑」｜75-85s「四个颜色，通勤刚需」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价69，视频价44/件，防晒保暖口罩」｜8-30s「UPF50+护眼角，薄绒保暖」｜30-55s「玻尿酸保湿，耐水洗」｜55-75s「44一件，通勤刚需，两件换着戴」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["天宇TYU · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7697674574976153704/", "冬天寒风冻脸又干又疼，蕉下这款保暖口罩真的实用又高颜值。"], ["Mia阿姨【奔四海淀俩娃妈】 · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7683904451426053446/", "这是我接送娃必备的了，价格合适可以囤。"], ["Giggoo · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7688234561830964137/", "口罩戴来戴去还是蕉下，秋冬款防风保暖没有替代，热门色快冲。"]]},
+{big:"其他",c:"口罩",n:"PM054 厚绒护眼角保暖口罩",op:"89/178",vp:"59/98",code:"PM054",sell:"外层软壳挡风+内层厚绒锁温，UPF500+",
+ s:[["痛点直给", "0-5s「秋冬骑行通勤，就戴这个厚绒口罩」｜5-15s「冬天骑车脸被风吹得疼，眼镜还容易起雾，这个厚绒口罩全解决」｜15-35s「外层软壳挡风，内层厚绒锁温，持久强保暖；秋冬专研UPF500+，防风更防晒」｜35-55s「口鼻处湿速导科技，秋冬骑行减少面部潮气堆积，差旅出行久戴不糊脸，速干不闷湿」｜55-75s「复式加高护眼角，通勤赶路阻挡风沙贴合不翘边；三重立体设计，上脸修饰轮廓视觉提拉显脸小；中空畅吸通道呼吸顺畅不闷湿」｜75-85s「漫暮黑、乌杏棕、云霾粉、原露米四色，59起」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「冬天骑车脸被风吹得疼，这个厚绒口罩救了我」｜8-25s「软壳挡风、厚绒锁温，护眼角挡风沙，显脸小」｜25-50s「口鼻湿速导，久戴不糊脸，呼吸顺畅」｜50-75s「UPF500+防晒，冬天也能防紫外线」｜75-85s「四个颜色，骑行通勤刚需」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价89起，视频价59起，厚绒保暖口罩」｜8-30s「软壳挡风+厚绒锁温，UPF500+防晒」｜30-55s「久戴不糊脸，显脸小」｜55-75s「59起，骑行通勤刚需」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["享悦福利社（蕉下内购场） · 销售额 5万–10万元", "https://www.douyin.com/share/video/7696963793615736091/", "挑日常用品看实用，保暖口罩有厚绒设计，按自己的需要选。"], ["天宇TYU · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7697674574976153704/", "冬天寒风冻脸又干又疼，蕉下这款保暖口罩真的实用又高颜值。"], ["Mia阿姨【奔四海淀俩娃妈】 · 销售额 2.5万–5万元 · 含多款", "https://www.douyin.com/share/video/7683904451426053446/", "这是我接送娃必备的了，价格合适可以囤。"]]},
+{big:"其他",c:"内衣袜",n:"SF054 裸感莫代尔内裤·3条装",op:"49.9",vp:"38.9",code:"SF054",sell:"裸感莫代尔，10A抑菌，16cm加长底裆",
+ s:[["痛点直给", "0-5s「3条38.9，裸感莫代尔，穿了跟没穿一样」｜5-15s「贴身衣物最怕勒、怕夹、怕闷，这条裸感内裤全照顾到」｜15-35s「10.1%高弹氨纶纤维，整身高弹贴合，活动不勒不跑位，松紧有度不紧绷，轻松包容多种身形」｜35-55s「100%纯棉有氧底裆长效抑菌，16cm加长底裆符合女性生理构造，10A级强效抑菌水洗不减防护力」｜55-75s「立体循环透气久穿不闷，立体包臀结构动不移位坐不夹臀，轻薄弹力织带柔软不勒腰，超薄网纱脚口不卡腿少摩擦」｜75-85s「三色组合装，38.9元3条」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「贴身衣物要舒服，这条裸感莫代尔穿了不想换」｜8-25s「高弹贴合不勒，纯棉底裆抑菌干爽，立体包臀不夹」｜25-50s「16cm加长底裆，动不移位坐不夹臀」｜50-75s「三条装换洗方便，10A抑菌更安心」｜75-85s「三色组合，38.9三条」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价49.9，视频价38.9，3条裸感内裤」｜8-30s「莫代尔裸感，10A抑菌」｜30-55s「加长底裆，立体包臀」｜55-75s「38.9三条，贴身刚需囤」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["阿柯的零食 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7692477688984958824/", "聚焦女士莫代尔内裤的裸感主题，标题以商品话题为主。"], ["伊伊子 · 销售额 5000–1万元", "https://www.douyin.com/share/video/7691508848452654217/", "从回购与优惠切入，集中介绍莫代尔内裤的柔软、透气、弹力和独立包装。"], ["阿柯的零食 · 销售额 2500–5000元", "https://www.douyin.com/share/video/7693528087283424655/", "以回复评论形式提及女士莫代尔内裤，标题未展开具体讲解。"]]},
+{big:"其他",c:"内衣袜",n:"CT04926 抗菌棉质内裤·3条装",op:"59",vp:"49",code:"CT04926",sell:"A类母婴级呼吸棉，10A抑菌，3D立体不夹臀",
+ s:[["痛点直给", "0-5s「A类母婴级棉花的内裤，3条49」｜5-15s「敏感肌贴身衣物最怕刺激，这条A类母婴级呼吸棉内裤，低敏又安心」｜15-35s「50S精梳安心棉亲肤贴合无刺痒，A级母婴级低敏少刺激，舒适透气干爽抑菌」｜35-55s「有氧呼吸棉底裆长效抑菌，天然会呼吸透气不闷湿，10A级强效抑菌水洗不减防护力」｜55-75s「编织网孔提花面料加速空气疏通快速排湿，高弹力氨纶贴身不勒不卷边，3D立体版型自在贴合不夹臀；无感标签不磨肤，侧缝前移不压痕」｜75-85s「裸桃粉、热可可、奶霜紫等组合，49元3条」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「敏感肌也能穿的安心棉内裤，母婴级材质」｜8-25s「A类呼吸棉低敏，10A抑菌透气，3D立体不夹臀」｜25-50s「网孔提花透气排湿，久穿不闷」｜50-75s「无感标签不磨肤，侧缝前移不压痕」｜75-85s「多色组合，49三条」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价59，视频价49，A类母婴级内裤3条」｜8-30s「呼吸棉透气，10A抑菌」｜30-55s「3D不夹臀，低敏不刺激」｜55-75s「49三条，安心棉囤起来」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[]},
+{big:"其他",c:"内衣袜",n:"EL041/EL039 高弹棉质中筒袜·4双装",op:"69",vp:"49",code:"EL041/EL039",sell:"强吸精梳棉+10A抑菌，高弹不掉筒",
+ s:[["痛点直给", "0-5s「4双49，10A抑菌棉袜，告别汗脚味」｜5-15s「袜子穿一天就臭、还掉筒掉跟，这双抑菌棉袜全解决」｜15-35s「强吸精梳棉快速导汗不黏脚，精选高支精梳棉具备导湿空间，吸湿更高效告别汗脚臭味」｜35-55s「全足透气排汗久穿干爽不闷脚，中空棉纤维加强透气，立体导汗槽排汗散热」｜55-75s「10A级强效抑菌，大肠杆菌抑菌99%、金黄色葡萄球菌99%、白色念珠菌88%；高弹氨纶不掉筒不掉跟，足弓罗纹回弹暴走不累脚」｜75-85s「高弹袜口不勒腿，一字袜跟不掉跟，加固袜头不破顶，男女各四双，49块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「穿一天袜子不闷不臭，这双抑菌棉袜真香」｜8-25s「精梳棉导汗，10A抑菌，高弹不掉筒」｜25-50s「足弓回弹，暴走不累脚」｜50-75s「加固袜头耐穿，袜口不勒腿」｜75-85s「男女各四双，49块」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价69，视频价49，4双抑菌棉袜」｜8-30s「10A抑菌，强吸导汗」｜30-55s「高弹不掉筒，加固耐穿」｜55-75s「49四双，全家都够穿」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["🌸朵儿妈零食 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7698941603326848690/", "冬天给臭脚的老公买袜子一定不能吝啬。"], ["阿柯的零食 · 销售额 1万–2.5万元", "https://www.douyin.com/share/video/7699717688666834560/", "聚焦男士中筒袜，标题以商品名称和品类话题为主。"], ["子禾妈妈 · 销售额 5000–1万元", "https://www.douyin.com/share/video/7690592543146358449/", "男士中筒袜、袜子。"]]},
+{big:"其他",c:"包袋",n:"LC010 随行斜挎软包",op:"199",vp:"164",code:"LC010",sell:"双面镜像拉链袋，左右取物都顺手，超轻挺括",
+ s:[["痛点直给", "0-5s「这个斜挎包，左右手取物都顺手」｜5-15s「普通斜挎包换边背，取东西别扭还容易掉，这个双面镜像设计全解决」｜15-35s「双面镜像拉链袋，包体两面都设计对称式拉链口袋，不管挎在左还是右，入口方向始终符合向前取物的自然动线，顺手又防掉」｜35-55s「双侧镜像抽绳袋常用物品快取放，两侧镜像开口口袋增加取物便捷，搭配抽绳封口易存取更安心」｜55-75s「超轻零感面料柔软轻盈高韧耐用，环绕式贴身包型10L双弧稳定主仓挺括不软塌；加宽分压肩带久背不勒肩，内隔层记忆棉护手机，外层防油污」｜75-85s「浅砾咖、银纱灰、松烟黑等六色，164块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤逛街，这个斜挎包轻便又能装」｜8-25s「双面拉链取物顺手，10L主仓挺括有型」｜25-50s「加宽肩带不勒肩，手机有专属防护」｜50-75s「斜挎单肩随心切换，怎么背都舒服」｜75-85s「六个颜色，通勤出行百搭」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价199，视频价164，随行斜挎软包」｜8-30s「双面取物，超轻挺括」｜30-55s「10L大容量，护手机」｜55-75s「164块，通勤出行百搭」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["阿走同学 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7682447226480826554/", "出行方便又百搭实用；超实用的包包分享、包包推荐、斜挎包、包包。"], ["卢师傅 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7664089164672967153/", "好看且实用的斜挎饺子包 面料做工颜色都超棒～值得入手。"], ["阿走同学 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7688292668325338225/", "好评不断，蕉下饺子包。"]]},
+{big:"其他",c:"包袋",n:"LC007 轻便扩容双肩短包",op:"169",vp:"134",code:"LC007",sell:"mini包身可扩容，户外全防护防泼水",
+ s:[["痛点直给", "0-5s「小包能装平板，还防泼水，通勤出游都行」｜5-15s「普通小包装不下平板，大包又重，这个mini包能扩容，轻便又实用」｜15-35s「mini包身加载扩容，一抽一拉内部分区设计，可装下平板，内里充棉更好保护电子产品，隐私拉链袋重要证件安心放」｜35-55s「外附大抽绳袋日常用品随用随取，侧面双插袋松紧口不易掉落，快取抽绳袋随手取物防丢失」｜55-75s「户外全防护系统，拒水防泼湿、防油好打理、防污易清洁；双分压肩负肩带立挺外廓重心不偏移，加宽加厚肩带分散承重」｜75-85s「默絮灰、芋灰粉、岭雀蓝等八色，134块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「出门装平板又想轻便，这个小包扩容后刚好」｜8-25s「一抽一拉扩容，分区保护电子，防泼水」｜25-50s「双分压肩带，背重物不累」｜50-75s「抽绳袋侧插袋随取方便」｜75-85s「八个颜色，通勤出游两用」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价169，视频价134，轻便扩容双肩包」｜8-30s「mini可扩容，防泼水防污」｜30-55s「分区护电子，肩带分压」｜55-75s「134块，通勤出游两用」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["罐罐来啦 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7683104829838096614/", "以出行旅游为场景，突出泡芙双肩包的大容量。"], ["姑姑没想好 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7665528911232570533/", "围绕出游收纳需求，强调泡芙双肩包能装、实用。"], ["福师傅2.0 · 销售额 5万–10万元", "https://www.douyin.com/share/video/7514202140959051067/", "从外出背包体验切入，突出轻量、大容量和不易脏。"]]},
+{big:"其他",c:"生活周边",n:"LC014 护耳重力眼罩",op:"149",vp:"",code:"LC014",sell:"光噪双隔离，重力珠微压助深睡",
+ s:[["痛点直给", "0-5s「午休戴它，20分钟像睡了两小时」｜5-15s「午休被光晃醒、被噪音吵醒，这个眼罩耳罩二合一全解决」｜15-35s「光噪双隔离直达深睡眠，一体式环绕构造同时隔绝光线与噪音，静享沉浸式休憩」｜35-55s「眼罩耳罩二合一同步遮光防噪音，立体护耳舱结构轻柔贴合不压双耳，内置多层隔音材料有效隔绝环境杂音」｜55-75s「重力珠微压眼周助力深睡舒缓疲惫；五层遮光结构吸光中层、遮光中层、海绵夹层、重力珠层、亲肤层，360°无死角挡光；3D仿生眼窝科学护眼，魔术贴轻声撕拉不扯发」｜75-85s「薄暮蓝、漫暮黑两色」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「出差高铁午休，遮光又隔音，戴它秒入睡」｜8-25s「眼罩耳罩二合一，重力珠微压助眠，五层遮光」｜25-50s「3D眼窝不压眼，魔术贴不扯发」｜50-75s「多层隔音，环境再吵也能静下来」｜75-85s「两个颜色，睡眠好物」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价149，光噪双隔离护耳眼罩」｜8-30s「遮光隔音二合一，重力珠助深睡」｜30-55s「五层遮光，3D护眼」｜55-75s「给睡眠加个开关，午休出差都能用」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["阿柯的零食 · 销售额 10万–25万元", "https://www.douyin.com/share/video/7673178401738429539/", "蕉下重力眼罩重磅升级 眼罩+耳罩二合一。"], ["阿柯的零食 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7694659223359843299/", "聚焦重力睡眠眼罩与遮光需求，标题以商品话题为主。"], ["阿柯的零食 · 销售额 2.5万–5万元", "https://www.douyin.com/share/video/7695446096016836067/", "聚焦重力睡眠眼罩与遮光需求，标题以商品话题为主。"]]},
+{big:"其他",c:"生活周边",n:"LC012 轻量随行保温杯",op:"79",vp:"64",code:"LC012",sell:"316L母婴级不锈钢，193g轻量，6h保热保冷",
+ s:[["痛点直给", "0-5s「193g的保温杯，保热保冷6小时」｜5-15s「普通保温杯又重又难洗，这个193g轻量杯，轻便还能6小时锁温」｜15-35s「SUS316L母婴级不锈钢内胆，各种饮品放心装」｜35-55s「空杯约193g轻量便携，装包里没负担」｜55-75s「内胆侧壁一体无缝，清洗少盲区；6重杯芯锁温结构，保热保冷大于6小时，减少热量流速延长适温时长」｜75-85s「镜光银、雾林绿、霜奶白等八色，64块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「通勤包里放一个，轻到没重量，随时有热水」｜8-25s「316L母婴级内胆，193g轻量，一体无缝好清洗」｜25-50s「6小时保热保冷，办公室通勤都合适」｜50-75s「八个颜色任选，轻便又好看」｜75-85s「轻量随行，通勤刚需」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价79，视频价64，母婴级保温杯」｜8-30s「316L内胆，193g轻量」｜30-55s「6h锁温，一体无缝」｜55-75s「64块，办公室通勤都合适」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[["夏夏家居 · 销售额 1000–2500元", "https://www.douyin.com/share/video/7680139305653669163/", "蕉下全新升级款超轻保冷保温杯。"], ["姿老板 · 销售额 1000–2500元 · 含多款", "https://www.douyin.com/share/video/7672771543549770993/", "蕉下随行保温杯升级啦，比老款轻还耐磨 学生党和早八人真的可以冲。"]]},
+{big:"其他",c:"生活周边",n:"UV002 毛绒挂件防晒伞",op:"199",vp:"139.9",code:"UV002",sell:"UV-Air原纱防晒UPF50+，小至12cm收纳，毛绒挂件",
+ s:[["痛点直给", "0-5s「能挂包上的防晒伞，收起来只有12cm」｜5-15s「防晒伞又大又占地方，这个毛绒挂件伞，收起来只有12cm，还能当挂件」｜15-35s「UV-Air原纱防晒，UPF50+，防晒力在线」｜35-55s「小至12cm随处可收，大至78cm从面部防晒到肩膀」｜55-75s「毛绒挂件造型可爱，葡萄公爵、茄茄大厨、瓜瓜骑士、板栗长官四款，收起来是玩偶，打开是防晒伞」｜75-85s「四款挂件造型，139.9块」｜85-90s「左下角链接断色断码不补，抓紧去抢」"], ["场景种草", "0-8s「挂在包上像玩偶，打开却是防晒伞，可爱又实用」｜8-25s「12cm迷你收纳，UPF50+原纱防晒，萌趣挂件造型」｜25-50s「从面部防晒到肩膀，出门不怕晒」｜50-75s「送人自用都讨喜」｜75-85s「四款造型，可爱实用两不误」｜85-90s「同款左下角链接断色断码不补，抓紧去抢」"], ["促销逼单", "0-8s「原价199，视频价139.9，毛绒挂件防晒伞」｜8-30s「UPF50+防晒，12cm迷你」｜30-55s「萌趣挂件，实用可爱」｜55-75s「139.9，可爱实用两不误」｜75-85s「库存有限」｜85-90s「左下角链接断色断码不补，抓紧去抢」"]],
+ r:[]}
+];
+
+function escapeVideoIntro(text){return String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])).replace(/\n/g,'<br>');}
+const bigs = [...new Set(P.map(p=>p.big))];
+let filterHTML = `<div class="filter-row"><span class="chip active" data-c="all">全部 ${P.length}</span></div>`;
+for (const big of bigs) {
+  filterHTML += `<div class="filter-row"><span class="chip big-c" data-c="big:${big}">${big} ${P.filter(p=>p.big===big).length}</span>`;
+  const subs = [...new Set(P.filter(p=>p.big===big).map(p=>p.c))];
+  for (const sub of subs) {
+    filterHTML += `<span class="chip sub-c" data-c="sub:${sub}">${sub} ${P.filter(p=>p.c===sub).length}</span>`;
+  }
+  filterHTML += `</div>`;
+}
+document.getElementById('filterInner').innerHTML = '<div class="filter-top"><div class="filter-search"><input type="text" id="searchBox" placeholder="搜索商品名 / 款号 / 卖点…" autocomplete="off"></div><button type="button" class="filter-toggle" id="filterToggle" aria-controls="filterRows" aria-expanded="true" onclick="toggleFilter()">收起筛选 ▴</button></div><div class="filter-rows" id="filterRows">' + filterHTML + '</div>';
+document.body.insertAdjacentHTML('beforeend', '<button type="button" class="filter-float" id="filterFloat" aria-controls="filterRows" aria-expanded="true" onclick="toggleFilter(true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span class="filter-float-label">收起筛选</span><span class="filter-float-arrow" aria-hidden="true">▴</span></button>');
+
+function scriptHTML(s){
+  return s.map((sc,si)=>{
+    const nodes = sc[1].split('｜').map(x=>{
+      const m = x.match(/^(\d+-\d+s)/);
+      if(m){ return `<div class="node"><span class="t">${m[1]}</span><div class="x">${x.slice(m[1].length)}</div></div>`; }
+      return `<div class="node"><div class="x">${x}</div></div>`;
+    }).join('');
+    return `<div class="script-body ${si===0?'active':''}" data-si="${si}">${nodes}</div>`;
+  }).join('');
+}
+function tabHTML(s){
+  return s.map((sc,si)=>`<span class="tab ${si===0?'active':''}" data-si="${si}">${sc[0]}</span>`).join('');
+}
+
+function render(cat, keyword){
+  const isAll = cat==='all';
+  document.getElementById('hotSection').style.display = (isAll && !keyword) ? '' : 'none';
+  let list;
+  if (cat === 'all') list = P;
+  else if (cat.startsWith('big:')) list = P.filter(p=>p.big===cat.slice(4));
+  else list = P.filter(p=>p.c===cat.slice(4));
+  const searchMode = !!keyword;
+  if (searchMode) {
+    const kw = keyword.toLowerCase();
+    list = list.filter(p =>
+      p.n.toLowerCase().includes(kw) ||
+      p.code.toLowerCase().includes(kw) ||
+      p.sell.toLowerCase().includes(kw) ||
+      p.big.toLowerCase().includes(kw) ||
+      p.c.toLowerCase().includes(kw)
+    );
+    list = [...list].sort((a,b)=>((SALES[b.code]&&SALES[b.code].n)||0)-((SALES[a.code]&&SALES[a.code].n)||0));
+  } else {
+    const bigOrder = [...new Set(P.map(p=>p.big))];
+    const subOrder = [...new Set(P.map(p=>p.c))];
+    list = [...list].sort((a,b)=>{
+      const dBig = bigOrder.indexOf(a.big) - bigOrder.indexOf(b.big);
+      if (dBig) return dBig;
+      const dSub = subOrder.indexOf(a.c) - subOrder.indexOf(b.c);
+      if (dSub) return dSub;
+      return ((SALES[b.code]&&SALES[b.code].n)||0) - ((SALES[a.code]&&SALES[a.code].n)||0);
+    });
+  }
+  let html=''; let lastBig=''; let lastSub='';
+  list.forEach((p)=>{
+    if(!searchMode && p.big!==lastBig){
+      html+=`<div class="cat-anchor">${p.big}<span class="bar"></span><span class="cnt">${P.filter(x=>x.big===p.big).length} 款</span></div>`;
+      lastBig=p.big;
+      lastSub='';
+    }
+    if(!searchMode && p.c!==lastSub){
+      html+=`<div class="sub-cat">${p.c}<span class="scnt">${P.filter(x=>x.big===p.big && x.c===p.c).length} 款</span></div>`;
+      lastSub=p.c;
+    }
+    const vp = p.vp ? `<span class="price-vp">¥${p.vp}<small>视频价</small></span>` : `<span class="price-vp" style="font-size:13px;color:var(--sub)">视频价待定</span>`;
+    html+=`<div class="card" id="card-${p.code}">
+      <div class="card-top">
+        ${IMGS[p.code]?`<div class="card-img"><img src="${IMGS[p.code]}" alt="${p.n}" loading="lazy" decoding="async"></div>`:''}
+        <div class="card-info">
+          <h3>${p.n}</h3>
+          <div class="code">${p.code}</div>
+          <div class="price-box"><span class="price-op">原价 ¥${p.op}</span>${vp}</div>
+          <div class="sell">${p.sell}</div>${SALES[p.code]?`<div class="hot-sales"><span class="hs-amount">${SALES[p.code].s}</span><span class="hs-label">近30天带货视频 · 已售${SALES[p.code].v}</span></div>`:''}
+        </div>
+        ${colorStockHTML(p.code)}
+      </div>
+      <div class="scripts">
+        <div class="tabs">${tabHTML(p.s)}</div>
+        ${scriptHTML(p.s)}
+      </div>
+      <div class="card-foot"><div class="tt" title="${p.refSource || '销售额展示区间：已核实平台区间的沿用原值，其余按源表金额划档（下限包含、上限不含），非平台原始估算区间；含多款表示非目标款独占销售额。'}">${p.refSource ? '参考视频 · 平台销售额降序 · 09/30–10/29' : '参考视频 · 销售额区间'}</div><div class="tags">
+        ${p.r.length ? p.r.map((item)=>Array.isArray(item)
+          ? `<a class="tag video-reference" href="${item[1]}" target="_blank" rel="noopener"><span>💡 ${item[0]}</span>${item[2] ? `<span class="video-brief">${escapeVideoIntro(item[2])}</span>` : ''}</a>`
+          : `<span class="tag">💡 ${item}</span>`).join('') : '<span class="tag">暂无已确认关联目标款的参考视频</span>'}
+      </div></div>
+    </div>`;
+  });
+  document.getElementById('grid').innerHTML = html;
+  bindTabs();
+  bindLightbox();
+}
+function bindTabs(){
+  document.querySelectorAll('.tabs').forEach(tabs=>{
+    tabs.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        const si = tab.dataset.si;
+        tabs.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        const card = tabs.closest('.card');
+        card.querySelectorAll('.script-body').forEach(b=>{
+          b.classList.toggle('active', b.dataset.si===si);
+        });
+      });
+    });
+  });
+}
+function bindLightbox(){
+  document.querySelectorAll('.card-img img, .pimg img, .rimg img').forEach(img=>{
+    if (img.dataset.lightboxBound) return;
+    img.dataset.lightboxBound = 'true';
+    img.addEventListener('click',()=>{
+      let lb = document.getElementById('lightbox');
+      if(!lb){
+        lb = document.createElement('div');
+        lb.id = 'lightbox';
+        lb.className = 'lb';
+        lb.innerHTML = '<span class="close">×</span><img alt="大图">';
+        document.body.appendChild(lb);
+        lb.addEventListener('click',(e)=>{ if(e.target!==lb.querySelector('img')) { lb.classList.remove('show'); lb.querySelector('img').removeAttribute('src'); } });
+      }
+      lb.querySelector('img').src = img.src;
+      lb.classList.add('show');
+    });
+  });
+}
+function toggleFilter(fromFloat = false){
+  const rows = document.getElementById('filterRows');
+  const btn = document.getElementById('filterToggle');
+  const collapsed = rows.classList.toggle('collapsed');
+  btn.textContent = collapsed ? '展开筛选 ▾' : '收起筛选 ▴';
+  btn.setAttribute('aria-expanded', String(!collapsed));
+  const floating = document.getElementById('filterFloat');
+  floating.setAttribute('aria-expanded', String(!collapsed));
+  floating.querySelector('.filter-float-label').textContent = collapsed ? '展开筛选' : '收起筛选';
+  floating.querySelector('.filter-float-arrow').textContent = collapsed ? '▾' : '▴';
+  if (fromFloat && !collapsed) {
+    const filter = document.getElementById('filter');
+    const rect = filter.getBoundingClientRect();
+    if (rect.top < 0 || rect.bottom > window.innerHeight || rect.top > window.innerHeight) {
+      filter.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block:'start'});
+    }
+  }
+}
+function jumpToCard(code){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  document.querySelector('.chip[data-c="all"]').classList.add('active');
+  const sb = document.getElementById('searchBox');
+  if (sb) sb.value = '';
+  render('all');
+  const el = document.getElementById('card-' + code);
+  if (el) {
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+    el.classList.add('flash');
+    setTimeout(()=>el.classList.remove('flash'), 2600);
+  } else {
+    alert('该款在脚本墙暂未收录（不推）');
+  }
+}
+const searchBox = document.getElementById('searchBox');
+if (searchBox) {
+  searchBox.addEventListener('input', (e)=>{
+    const kw = e.target.value.trim();
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    document.querySelector('.chip[data-c="all"]').classList.add('active');
+    render('all', kw);
+  });
+}
+render('all');
+
+document.querySelectorAll('.chip').forEach(ch=>{
+  ch.addEventListener('click',()=>{
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    ch.classList.add('active');
+    render(ch.dataset.c);
+  });
+});
+</script>
+<script src="guide.js"></script>
+<script src="platform-snapshot.js"></script>
+</body>
+</html>
