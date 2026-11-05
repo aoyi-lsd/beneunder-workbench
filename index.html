@@ -164,6 +164,8 @@ a.tag:hover{background:var(--accent);color:#fff}
 .filter-float{position:fixed;right:24px;bottom:28px;bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;min-height:52px;padding:12px 20px;border:1px solid #d08457;border-radius:999px;background:#7d351d;color:#fff;font:700 15px inherit;cursor:pointer;box-shadow:0 6px 24px rgba(75,36,19,.28);transition:background .18s,transform .18s}.filter-float:hover{background:#a34621;transform:translateY(-2px)}.filter-float svg{width:19px;height:19px;flex:none}.filter-float-label{font-size:15px;font-weight:700}.filter-float-arrow{font-size:14px;opacity:.8}
 @media(max-width:600px){.filter-float{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));min-height:48px;padding:11px 16px}.filter-toggle{padding:10px 12px}.filter-top{gap:8px}body{padding-bottom:82px}}
 .video-reference{display:flex;flex-direction:column;align-items:flex-start;gap:5px;max-width:100%;white-space:normal}.video-brief{font-size:12px;line-height:1.6;font-weight:400;color:#666;text-align:left;overflow-wrap:anywhere}
+.card{content-visibility:auto;contain-intrinsic-size:auto 850px}
+.guide-card{content-visibility:auto;contain-intrinsic-size:auto 320px}
 </style>
 <link rel="stylesheet" href="guide.css">
 </head>
@@ -186,7 +188,7 @@ a.tag:hover{background:var(--accent);color:#fff}
 <main class="wrap">
   <section class="section" id="top10Section">
     <h2 class="section-title">蕉下 TOP10 商品榜</h2>
-    <div class="top-note">商品库 · 近30天 · 按销售额排序 · 更新时间 2026/10/28</div>
+    <div class="top-note">2026/10/06—11/04 · 货盘内已确认同款链接视频销售额排序 · 非品牌全量榜；多款合并及无法确认链接未分摊</div>
     <div class="podium" id="podium"></div>
     <div class="rank-list" id="rankList"></div>
   </section>
@@ -215,25 +217,14 @@ a.tag:hover{background:var(--accent);color:#fff}
 <p class="footnote">试用版依据货盘与历史数据生成策划建议，非实时热度；发布前核对款号、价格、库存及卖点证据。任务与反馈仅保存在本机，参考视频可直达抖音。</p>
 
 <script>
-const IMGS={"CT023":"assets/products/859cd85040c887e4776d.jpg","CT024":"assets/products/18c8b87081a74808d308.jpg","CT013":"assets/products/3b06e9a29e092842d608.jpg","PM043":"assets/products/4e80ecb41119f77cd7a9.jpg","PM021":"assets/products/9c2c659223af1724b698.jpg","PM023":"assets/products/59c107e12e4512b3315c.jpg","PM007":"assets/products/5874f1760d097db8cd24.jpg","PM002/PM006":"assets/products/383bb23271b9fa5a77ba.jpg","SF015":"assets/products/bab8e2aae91db1d69eba.jpg","SF027":"assets/products/95e410ad3119e5fefceb.jpg","SF016":"assets/products/7a670d59ab1073d25913.jpg","SF028":"assets/products/396e66c59db3f501b3d1.jpg","HW001":"assets/products/db537aea46426e436ea0.jpg","UV009":"assets/products/8dfdaeb63daee8d86028.jpg","CL010":"assets/products/e39a5f64f1e68bbfec05.jpg","PM028":"assets/products/71212a2d211723f0efb7.jpg","PM030":"assets/products/76e25570457a323aa8e9.jpg","PM037":"assets/products/36dc2926c2f7db0cbd55.jpg","PF007":"assets/products/8074c401d73ab5eada4d.jpg","PF005":"assets/products/8986cb852354594cf700.jpg","PF004":"assets/products/1403f4f67f26ab2e9a22.jpg","CL023":"assets/products/d3b8a53f8732bd867a18.jpg","CL026":"assets/products/aca55d4b128b33cf1e8f.jpg","CL028":"assets/products/425da5f6de88b9e12a5e.jpg","HD008":"assets/products/cb068b90dbb8c8883515.jpg","HD012":"assets/products/129fa73d9d676de01c55.jpg","CL021":"assets/products/b867c0a1cdaaa298445c.jpg","EL033/EL035":"assets/products/269c616f520884f89898.jpg","EL012/EL015":"assets/products/721c64d1f4f6708e8940.jpg","SF009":"assets/products/092d1aac0a7722360e1e.jpg","EL009":"assets/products/b692a9bf1cda110a99f5.jpg","EL011":"assets/products/390f42cc690aeccd3f02.jpg","HE024":"assets/products/537ca75eb7ed9fe650dc.jpg","WB007/WB006":"assets/products/bfb4c0106aa89765fd6f.jpg","SF056":"assets/products/9539851ffe4e0058ed61.jpg","PM020":"assets/products/6d223bf72987c856fb32.jpg","HW004":"assets/products/c9c6dcd3ebfcaba886fc.jpg","DS566":"assets/products/e3539570a6fe294c8dc5.jpg","PM058":"assets/products/11305d0ef55e04e7876a.jpg","PM050":"assets/products/7ee77675f06ce06d6f79.jpg","PM054":"assets/products/95f6bbcd6d9f24dc6dee.jpg","SF054":"assets/products/bf59f8c995324eb3e3d5.jpg","CT04926":"assets/products/fd43f8043fb3bc936c30.jpg","EL041/EL039":"assets/products/ed663e655c6c748d8281.jpg","LC010":"assets/products/11a7d1d510b78cef99ff.jpg","LC007":"assets/products/263cb9e5753409be78f0.jpg","LC014":"assets/products/228bfc23a5d82b06e316.jpg","LC012":"assets/products/61141e1abd9139f3848b.jpg","UV002":"assets/products/3b1a41b01fc50dd45988.jpg","SOFT":"assets/products/aaa82a9a0846c29cc6c2.jpg"};
+const IMGS={"CT023":"859cd85040c887e4776d.jpg","CT024":"18c8b87081a74808d308.jpg","CT013":"3b06e9a29e092842d608.jpg","PM043":"4e80ecb41119f77cd7a9.jpg","PM021":"9c2c659223af1724b698.jpg","PM023":"59c107e12e4512b3315c.jpg","PM007":"5874f1760d097db8cd24.jpg","PM002/PM006":"383bb23271b9fa5a77ba.jpg","SF015":"bab8e2aae91db1d69eba.jpg","SF027":"95e410ad3119e5fefceb.jpg","SF016":"7a670d59ab1073d25913.jpg","SF028":"396e66c59db3f501b3d1.jpg","HW001":"db537aea46426e436ea0.jpg","UV009":"8dfdaeb63daee8d86028.jpg","CL010":"e39a5f64f1e68bbfec05.jpg","PM028":"71212a2d211723f0efb7.jpg","PM030":"76e25570457a323aa8e9.jpg","PM037":"36dc2926c2f7db0cbd55.jpg","PF007":"8074c401d73ab5eada4d.jpg","PF005":"8986cb852354594cf700.jpg","PF004":"1403f4f67f26ab2e9a22.jpg","CL023":"d3b8a53f8732bd867a18.jpg","CL026":"aca55d4b128b33cf1e8f.jpg","CL028":"425da5f6de88b9e12a5e.jpg","HD008":"cb068b90dbb8c8883515.jpg","HD012":"129fa73d9d676de01c55.jpg","CL021":"b867c0a1cdaaa298445c.jpg","EL033/EL035":"269c616f520884f89898.jpg","EL012/EL015":"721c64d1f4f6708e8940.jpg","SF009":"092d1aac0a7722360e1e.jpg","EL009":"b692a9bf1cda110a99f5.jpg","EL011":"390f42cc690aeccd3f02.jpg","HE024":"537ca75eb7ed9fe650dc.jpg","WB007/WB006":"bfb4c0106aa89765fd6f.jpg","SF056":"9539851ffe4e0058ed61.jpg","PM020":"6d223bf72987c856fb32.jpg","HW004":"c9c6dcd3ebfcaba886fc.jpg","DS566":"e3539570a6fe294c8dc5.jpg","PM058":"11305d0ef55e04e7876a.jpg","PM050":"7ee77675f06ce06d6f79.jpg","PM054":"95f6bbcd6d9f24dc6dee.jpg","SF054":"bf59f8c995324eb3e3d5.jpg","CT04926":"fd43f8043fb3bc936c30.jpg","EL041/EL039":"ed663e655c6c748d8281.jpg","LC010":"11a7d1d510b78cef99ff.jpg","LC007":"263cb9e5753409be78f0.jpg","LC014":"228bfc23a5d82b06e316.jpg","LC012":"61141e1abd9139f3848b.jpg","UV002":"3b1a41b01fc50dd45988.jpg","SOFT":"aaa82a9a0846c29cc6c2.jpg"};
 
 const STOCK={"CT023": 25486, "CT024": 2402, "CT013": 18858, "PM043": 4991, "CL010": 17612, "PM021": 9735, "PM023": 1503, "PM007": 25446, "PM002": 16780, "PM006": 13162, "SF015": 4033, "SF027": 3636, "SF016": 908, "SF028": 1029, "HW001": 3319, "DR029": 21, "UV009": 2290, "PM028": 31156, "PM030": 918, "PM037": 1945, "PF007": 3493, "PF005": 8623, "PF004": 6426, "CL023": 1893, "CL026": 8787, "CL028": 4407, "CL021": 1054, "HD008": 2771, "HD012": 1008, "EL033": 2225, "EL035": 7990, "EL012": 1839, "EL015": 617, "SF009": 2161, "EL009": 2198, "EL011": 211, "HE024": 2981, "WB007": 776, "WB006": 420, "SF056": 1396, "PM020": 319, "HW004": 25872, "DS566": 16, "PM058": 1611, "PM050": 23914, "PM054": 16543, "SF054": 4017, "CT04926": 0, "EL041": 4217, "EL039": 3182, "LC010": 8179, "LC007": 5328, "LC014": 0, "LC012": 6850, "UV002": 284};
 
 const STOCK_COLOR={"CT023": {"漫暮黑": 18276, "霜奶白": 5592, "红糖棕": 900, "芋奶紫": 537, "山岭棕": 181}, "CT024": {"漫暮黑": 969, "霜奶白": 946, "红糖棕": 292, "云烟蓝": 193}, "CT013": {"漫暮黑": 11872, "霜奶白": 4309, "苏木棕": 1874, "松木灰": 268, "烟绯紫": 189, "极夜蓝": 184, "山岭棕": 94, "沁葡紫": 64}, "PM043": {"奶杏白": 2754, "漫暮黑": 1077, "生巧棕": 498, "映野灰": 276, "沁葡紫": 193, "云烟蓝": 192}, "CL010": {"沁柔白": 13291, "漫暮黑": 3510, "石墨灰": 647, "映野灰": 162}, "PM021": {"银叶灰": 4167, "红糖棕": 2497, "幻影灰": 2095, "椰米白": 975}, "PM023": {"漫暮黑": 736, "松木灰": 307, "沁葡紫": 230, "云烟蓝": 228}, "PM007": {"幻影灰": 10953, "椰米白": 5424, "沁葡紫": 4161, "银叶灰": 3865, "麦秆咖": 303, "云烟蓝": 293, "韵木棕": 244, "卵石灰": 153, "烟熏褐粉": 45}, "PM002": {"幻影灰": 7749, "椰米白": 3784, "松木灰": 2997, "红糖棕": 1297, "沁葡紫": 951, "原露米": 0, "清烟蓝": 0, "绣球紫": 0, "麦秆咖": 0, "韵木棕": 0}, "PM006": {"秋岩棕": 5631, "幻影灰": 5188, "银沙米": 1207, "银叶灰": 1135, "原露米": 0, "墨海黑": 0, "清烟蓝": 0, "绣球紫": 0, "麦秆咖": 0, "韵木棕": 0}, "SF015": {"红糖棕": 2173, "浅月灰": 1227, "极夜蓝": 632}, "SF027": {"漫暮黑": 1357, "原露米": 1257, "浅雾粉": 1018, "熟栗红": 2, "秋岩棕": 0, "藕荷粉": 0}, "SF016": {"椰米白": 431, "漫暮黑": 212, "红糖棕": 171, "云烟蓝": 93}, "SF028": {"浅雾粉": 548, "漫暮黑": 354, "原露米": 96, "清烟蓝": 30}, "HW001": {"海盐灰": 2451, "极夜蓝": 868}, "DR029": {"暮林紫": 8, "漫暮黑": 7, "糯冰青": 6}, "UV009": {"燕麦白": 1030, "幽谷黑": 734, "云烟蓝": 355, "秋岩棕": 171}, "PM028": {"深竹绿": 12176, "栗灰棕": 12100, "红糖棕": 2551, "沁葡紫": 2506, "银沙米": 1761, "云烟蓝": 50, "山岭棕": 8}, "PM030": {"极夜蓝-墨染云絮": 291, "冷月白-银沙米": 261, "红糖棕-墨染云絮": 258, "沁葡紫-冷烟云絮": 107}, "PM037": {"砾岩咖-砾岩咖": 937, "漫暮黑-幻影灰": 515, "深咖灰-橄榄云絮": 492}, "PF007": {"紫菀花": 1255, "原露米": 1068, "蓝烟灰": 771, "漫暮黑": 398}, "PF005": {"漫暮黑": 3023, "蓝烟灰": 2575, "薄灰绿": 1543, "紫菀花": 1285, "月牙蓝": 195}, "PF004": {"漫暮黑": 3463, "秋岩棕": 1364, "原露米": 1315, "月牙蓝": 283}, "CL023": {"漫暮黑": 935, "原露米": 640, "蓝烟灰": 317}, "CL026": {"秋岩棕": 7966, "薄灰绿": 654, "漫暮黑": 132, "蓝烟灰": 34}, "CL028": {"漫暮黑": 2175, "深卡其": 754, "木茶青": 741, "深空灰": 735}, "CL021": {"蓝烟灰": 330, "漫暮黑": 327, "紫菀花": 239, "薄灰绿": 157}, "HD008": {"漫暮黑": 1291, "松露棕": 664, "茶岩棕": 476, "奶杏白": 339}, "HD012": {"奶杏白": 435, "漫暮黑": 423, "古木棕": 121, "茶岩棕": 28}, "EL033": {"浅月青": 1117, "漫暮黑": 1107}, "EL035": {"浅月青": 7374, "漫暮黑": 616}, "EL012": {"秋岩棕": 966, "烟纱灰": 568, "漫暮黑": 305}, "EL015": {"秋岩棕": 357, "烟纱灰": 239, "漫暮黑": 21}, "SF009": {"原露米": 943, "秋岩棕": 664, "烟纱灰": 553}, "EL009": {"秋岩棕": 1066, "羽花云絮": 992, "漫暮黑": 139}, "EL011": {"秋岩棕": 208, "榛果灰": 3}, "HE024": {"漫暮黑": 2981}, "WB007": {"幻影灰": 367, "苏木棕": 244, "银叶灰": 163, "漫暮黑": 0}, "WB006": {"银叶灰": 347, "幻影灰": 36, "苏木棕": 29, "漫暮黑": 7}, "SF056": {"雾卡其": 1351, "幻影灰": 36, "深卡其": 7}, "PM020": {"子墨灰": 165, "银叶灰": 96, "苏木棕": 57}, "HW004": {"默咖米": 9970, "默絮灰": 9154, "砺石灰": 3873, "紫栗棕": 2272, "焰萝红": 601}, "DS566": {"漫暮黑": 7, "海棠紫": 4, "霜奶黄": 3, "石墨灰": 1, "柠檬黄": 0, "清浅蓝": 0, "桃露粉": 0}, "PM058": {"极夜尘迹": 783, "海棠织云": 774, "流岚织云": 47, "霜银尘迹": 5, "落日尘迹": 0}, "PM050": {"深花灰": 16612, "蓝烟灰": 4582, "乌杏棕": 2592, "薄烟紫": 127}, "PM054": {"乌杏棕": 9664, "漫暮黑": 3964, "原露米": 2642, "云霾粉": 272}, "SF054": {"沁柔白+薄雾绿+暖沙杏": 1996, "沁柔白+暖沙杏+素柠黄": 627, "素柠黄+奶盐灰+沁柔白": 547, "薄雾绿+素柠黄+奶盐灰": 458, "暖沙杏+素柠黄+奶盐灰": 387}, "CT04926": {}, "EL041": {"漫暮黑×4": 2233, "沁柔白+藤雾灰+石墨灰+漫暮黑": 1930, "奶杏白+檀木棕+绛咖紫+漫暮黑": 32, "藤雾灰+檀木棕+石墨灰+绛咖紫": 21, "浅炭灰+清浅绿+鸳鸯咖+云岚绿": 0, "椰米白+浅炭灰+石墨灰+漫暮黑": 0, "椰米白×4": 0}, "EL039": {"沁柔白×4": 1588, "沁柔白+藤雾灰+暮夜粉+漫暮黑": 1297, "椰米白×4": 166, "漫暮黑×4": 60, "奶杏白+暮夜粉+檀木棕+绛咖紫": 36, "奶杏白+檀木棕+绛咖紫+漫暮黑": 33, "淡月黄+原叶绿+鸳鸯咖+青茄紫": 0, "椰米白+奶油紫+鸳鸯咖+漫暮黑": 0}, "LC010": {"浅砾咖": 1777, "松烟黑": 1678, "烟绛紫": 1446, "银纱灰": 1420, "涧樱粉": 837, "樵木褐": 610, "峦雾绿": 222, "汐渊蓝": 187}, "LC007": {"默絮灰": 1620, "浅沙咖": 1035, "松烟黑": 1008, "芋灰粉": 660, "赤漠棕": 285, "波苔绿+萤草绿": 226, "麦秆黄＋奶栗黄": 211, "杏芒白": 123, "樱蕊红+橘霞粉": 51, "星暮紫": 38, "烟绛紫": 33, "麦秆黄": 21, "岭雀蓝": 14}, "LC014": {"薄暮蓝": 0, "漫暮黑": 0}, "LC012": {"椰米白": 1021, "蔓野绿": 1020, "旭茵黄": 1012, "漫暮黑": 942, "夏日橙": 768, "雾蔓粉": 510, "霜奶白": 502, "映野灰": 271, "深蓝灰": 261, "幕酒红": 178, "雾林绿": 121, "雾面银": 110, "草茵绿": 105, "镜光银": 14, "沙杏咖": 9, "岚烟紫": 0, "霜灰蓝": 0}, "UV002": {"瓜瓜骑士": 128, "茄茄大厨": 84, "板栗长官": 69, "葡萄公爵": 2}};
 
-const TOP10 = [
-  {name:"蕉下男士气绒外套", cat:"秋冬保暖·户外防风·立领", sales:"690万", vol:"2.09万件", view:"1131万", img:"CL028"},
-  {name:"蕉下软壳气绒服", cat:"男士高弹防风·户外连帽外套", sales:"277万", vol:"6895件", view:"747万", img:"SOFT"},
-  {name:"蕉下连帽万粒绒外套", cat:"双面穿·一面挡风一面保暖", sales:"263万", vol:"8063件", view:"330万", img:"PM030"},
-  {name:"蕉下男士运动直筒裤", cat:"弹韧空气层·宽松直筒拉比例", sales:"233万", vol:"1.48万件", view:"1015万", img:"SF056"},
-  {name:"蕉下女士修身长袖T恤", cat:"精梳棉+氨纶·修身显瘦", sales:"214万", vol:"2.41万件", view:"1530万", img:"CT024"},
-  {name:"蕉下女士高弹廓形长裤", cat:"显瘦舒适·弯刀裤·遮肉显高", sales:"204万", vol:"7437件", view:"517万", img:"EL009"},
-  {name:"蕉下高弹摇粒绒打底衫", cat:"半拉链·保暖锁温·修身", sales:"182万", vol:"1.1万件", view:"605万", img:"PM002/PM006"},
-  {name:"蕉下女士宽松长袖T恤", cat:"40支精梳棉·柔软高弹百搭", sales:"179万", vol:"2.33万件", view:"1017万", img:"CT023"},
-  {name:"蕉下分区弹力气绒外套", cat:"气绒5.0分区保暖·立领防风", sales:"178万", vol:"4683件", view:"324万", img:"CL021"},
-  {name:"蕉下高弹摇粒绒打底衫·连帽", cat:"连帽双开拉链·户外叠穿", sales:"175万", vol:"8972件", view:"617万", img:"PM023"}
-];
-const SALES={"CT023":{"s":"179万","v":"2.33万件","n":1791167},"CT024":{"s":"214万","v":"2.41万件","n":2135476},"CT013":{"s":"157万","v":"2.45万件","n":1566975},"PM043":{"s":"151万","v":"1.02万件","n":1510367},"CL010":{"s":"136万","v":"7296件","n":1361014},"PM021":{"s":"19.7万","v":"1104件","n":196565},"PM023":{"s":"175万","v":"8972件","n":1753763},"PM007":{"s":"59.1万","v":"3159件","n":590711},"PM002/PM006":{"s":"182万","v":"1.1万件","n":1819195},"UV009":{"s":"21.7万","v":"963件","n":216517},"SF015":{"s":"95.6万","v":"6683件","n":955951},"SF027":{"s":"95.6万","v":"6683件","n":955951},"SF016":{"s":"85万","v":"5381件","n":849804},"SF028":{"s":"85万","v":"5381件","n":849804},"HW001":{"s":"84.3万","v":"4265件","n":843241},"PM028":{"s":"107万","v":"4610件","n":1070124},"PM030":{"s":"263万","v":"8063件","n":2625913},"PM037":{"s":"123万","v":"3498件","n":1232540},"PF007":{"s":"99万","v":"5523件","n":990466},"PF005":{"s":"47.5万","v":"2190件","n":475110},"PF004":{"s":"83.8万","v":"3299件","n":838070},"CL023":{"s":"105万","v":"3773件","n":1051500},"CL026":{"s":"132万","v":"3826件","n":1318470},"CL028":{"s":"690万","v":"2.09万件","n":6903844},"CL021":{"s":"178万","v":"4683件","n":1782330},"HD008":{"s":"47.8万","v":"1241件","n":478085},"HD012":{"s":"3260","v":"5件","n":3260},"EL033/EL035":{"s":"6.7万","v":"477件","n":67021},"EL012/EL015":{"s":"105万","v":"4839件","n":1054689},"EL009":{"s":"204万","v":"7437件","n":2040513},"EL011":{"s":"22.5万","v":"939件","n":224775},"HE024":{"s":"7.2万","v":"667件","n":72015},"WB007/WB006":{"s":"125万","v":"4266件","n":1253334},"SF056":{"s":"233万","v":"1.48万件","n":2334520},"PM020":{"s":"55.2万","v":"2320件","n":552128},"HW004":{"s":"109万","v":"2.05万件","n":1085335},"PM058":{"s":"8.6万","v":"908件","n":86167},"PM050":{"s":"63.7万","v":"9662件","n":637023},"PM054":{"s":"27.6万","v":"3845件","n":275750},"SF054":{"s":"7.2万","v":"1791件","n":72173},"EL041/EL039":{"s":"4.7万","v":"981件","n":47440},"LC010":{"s":"69.5万","v":"4544件","n":694947},"LC007":{"s":"42.1万","v":"3482件","n":421310},"LC014":{"s":"36.5万","v":"3132件","n":365135},"LC012":{"s":"6.1万","v":"777件","n":61082}};
+const TOP10 = [{"name": "CL028 男士气绒外套·夹克款中暖", "cat": "已确认同款链接 · 视频渠道", "sales": "607.2万", "vol": "1.9万件", "view": "未更新", "img": "CL028"}, {"name": "SF056 男士宽松运动直筒裤", "cat": "已确认同款链接 · 视频渠道", "sales": "273.8万", "vol": "1.7万件", "view": "未更新", "img": "SF056"}, {"name": "PM002/PM006 高弹摇粒绒打底衫·半拉链", "cat": "已确认同款链接 · 视频渠道", "sales": "178.6万", "vol": "1.1万件", "view": "未更新", "img": "PM002/PM006"}, {"name": "PM030 连帽万粒绒外套·双面穿中暖", "cat": "已确认同款链接 · 视频渠道", "sales": "177.6万", "vol": "5444件", "view": "未更新", "img": "PM030"}, {"name": "PM023 高弹摇粒绒打底衫·连帽双开拉链", "cat": "已确认同款链接 · 视频渠道", "sales": "163.8万", "vol": "8544件", "view": "未更新", "img": "PM023"}, {"name": "EL012/EL015 高弹微喇裤·四季/高暖", "cat": "已确认同款链接 · 视频渠道", "sales": "152.9万", "vol": "6975件", "view": "未更新", "img": "EL012/EL015"}, {"name": "CL010 男士气绒保暖长袖T恤·圆领", "cat": "已确认同款链接 · 视频渠道", "sales": "139.9万", "vol": "7606件", "view": "未更新", "img": "CL010"}, {"name": "PF004 蓬松白绒外套·立领高暖", "cat": "已确认同款链接 · 视频渠道", "sales": "120.8万", "vol": "4772件", "view": "未更新", "img": "PF004"}, {"name": "CT013 弹力透气长袖T恤·男女同款", "cat": "已确认同款链接 · 视频渠道", "sales": "119.3万", "vol": "1.7万件", "view": "未更新", "img": "CT013"}, {"name": "CL023 气绒外套·圆领中暖", "cat": "已确认同款链接 · 视频渠道", "sales": "118.1万", "vol": "4245件", "view": "未更新", "img": "CL023"}];
+const SALES={"CL028":{"s":"607.2万","v":"1.9万件","n":6071871,"links":10},"SF056":{"s":"273.8万","v":"1.7万件","n":2737851,"links":6},"CL023":{"s":"118.1万","v":"4245件","n":1180677,"links":3},"PM002/PM006":{"s":"178.6万","v":"1.1万件","n":1785638,"links":14},"PM037":{"s":"109.7万","v":"3183件","n":1096867,"links":3},"EL012/EL015":{"s":"152.9万","v":"6975件","n":1528548,"links":10},"CL026":{"s":"115.4万","v":"3470件","n":1153994,"links":11},"HW004":{"s":"105.0万","v":"2.0万件","n":1049989,"links":5},"WB007/WB006":{"s":"107.4万","v":"3707件","n":1074431,"links":10},"PM030":{"s":"177.6万","v":"5444件","n":1776338,"links":11},"PM023":{"s":"163.8万","v":"8544件","n":1637809,"links":15},"CT013":{"s":"119.3万","v":"1.7万件","n":1193406,"links":7},"CL010":{"s":"139.9万","v":"7606件","n":1399067,"links":11},"LC010":{"s":"82.4万","v":"5427件","n":823526,"links":8},"PM043":{"s":"68.2万","v":"5791件","n":682321,"links":5},"PF004":{"s":"120.8万","v":"4772件","n":1208096,"links":10},"HW001":{"s":"60.3万","v":"3066件","n":603066,"links":6},"PF007":{"s":"61.3万","v":"3535件","n":613243,"links":7},"PM020":{"s":"79.6万","v":"3392件","n":796371,"links":5},"LC014":{"s":"40.9万","v":"3505件","n":408513,"links":1},"LC007":{"s":"41.5万","v":"3471件","n":415405,"links":2},"CT023":{"s":"118.0万","v":"1.5万件","n":1179908,"links":6},"PM054":{"s":"40.3万","v":"5695件","n":403252,"links":7},"EL011":{"s":"31.9万","v":"1335件","n":319095,"links":4},"HD008":{"s":"59.5万","v":"1601件","n":594944,"links":10},"PM028":{"s":"58.7万","v":"3492件","n":587487,"links":14},"UV009":{"s":"20.5万","v":"915件","n":205093,"links":1},"PM021":{"s":"35.1万","v":"2030件","n":351475,"links":14},"SF027":{"s":"16.3万","v":"1146件","n":162787,"links":3},"PM058":{"s":"15.4万","v":"1641件","n":154135,"links":2},"HE024":{"s":"7.7万","v":"712件","n":76689,"links":1},"EL041/EL039":{"s":"6.4万","v":"1301件","n":63606,"links":3},"CL021":{"s":"6.2万","v":"192件","n":61686,"links":5},"PM007":{"s":"8.1万","v":"467件","n":80507,"links":10},"SF015":{"s":"7.7万","v":"696件","n":77312,"links":4},"PM050":{"s":"7.5万","v":"1601件","n":75332,"links":3},"EL033/EL035":{"s":"6.9万","v":"482件","n":68572,"links":14},"SF054":{"s":"3.0万","v":"743件","n":29652,"links":2},"SF016":{"s":"2.5万","v":"177件","n":25285,"links":2},"PF005":{"s":"3.3万","v":"200件","n":33169,"links":7},"HD012":{"s":"3260","v":"5件","n":3260,"links":3},"EL009":{"s":"442","v":"2件","n":442,"links":1},"UV002":{"s":"439","v":"4件","n":439,"links":2},"CT024":{"s":"458","v":"6件","n":458,"links":4},"SF009":{"s":"0","v":"0件","n":0,"links":4},"SF028":{"s":"0","v":"0件","n":0,"links":1}};
 
 
 function renderTop10(){
@@ -247,7 +238,7 @@ function renderTop10(){
       <div class="medal">${rank}</div>
       <div class="nm">${p.name}</div>
       <div class="ct">${p.cat}</div>
-      <div class="bar"><b>${p.sales}</b><span>销量 ${p.vol} · 浏览 ${p.view}</span></div>
+      <div class="bar"><b>${p.sales}</b><span>销量 ${p.vol}</span></div>
     </div>`;
   }).join('');
   document.getElementById('rankList').innerHTML = TOP10.slice(3).map((p, i)=>{
@@ -450,14 +441,15 @@ for (const big of bigs) {
 document.getElementById('filterInner').innerHTML = '<div class="filter-top"><div class="filter-search"><input type="text" id="searchBox" placeholder="搜索商品名 / 款号 / 卖点…" autocomplete="off"></div><button type="button" class="filter-toggle" id="filterToggle" aria-controls="filterRows" aria-expanded="true" onclick="toggleFilter()">收起筛选 ▴</button></div><div class="filter-rows" id="filterRows">' + filterHTML + '</div>';
 document.body.insertAdjacentHTML('beforeend', '<button type="button" class="filter-float" id="filterFloat" aria-controls="filterRows" aria-expanded="true" onclick="toggleFilter(true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span class="filter-float-label">收起筛选</span><span class="filter-float-arrow" aria-hidden="true">▴</span></button>');
 
-function scriptHTML(s){
+function scriptHTML(s, selected = 0){
   return s.map((sc,si)=>{
+    if(si!==selected)return `<div class="script-body" data-si="${si}"></div>`;
     const nodes = sc[1].split('｜').map(x=>{
       const m = x.match(/^(\d+-\d+s)/);
       if(m){ return `<div class="node"><span class="t">${m[1]}</span><div class="x">${x.slice(m[1].length)}</div></div>`; }
       return `<div class="node"><div class="x">${x}</div></div>`;
     }).join('');
-    return `<div class="script-body ${si===0?'active':''}" data-si="${si}">${nodes}</div>`;
+    return `<div class="script-body active" data-si="${si}" data-ready="true">${nodes}</div>`;
   }).join('');
 }
 function tabHTML(s){
@@ -512,7 +504,7 @@ function render(cat, keyword){
           <h3>${p.n}</h3>
           <div class="code">${p.code}</div>
           <div class="price-box"><span class="price-op">原价 ¥${p.op}</span>${vp}</div>
-          <div class="sell">${p.sell}</div>${SALES[p.code]?`<div class="hot-sales"><span class="hs-amount">${SALES[p.code].s}</span><span class="hs-label">近30天带货视频 · 已售${SALES[p.code].v}</span></div>`:''}
+          <div class="sell">${p.sell}</div>${SALES[p.code]?`<div class="hot-sales"><span class="hs-amount">${SALES[p.code].s}</span><span class="hs-label">10/06—11/04 同款链接视频成交 · 已售${SALES[p.code].v}</span></div>`:''}
         </div>
         ${colorStockHTML(p.code)}
       </div>
@@ -539,6 +531,13 @@ function bindTabs(){
         tabs.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
         tab.classList.add('active');
         const card = tabs.closest('.card');
+        const product=P.find(p=>p.code===card.id.slice(5));
+        const target=card.querySelector(`.script-body[data-si="${si}"]`);
+        if(target&&!target.dataset.ready){
+          const template=document.createElement('template');
+          template.innerHTML=scriptHTML(product.s,Number(si));
+          target.replaceWith(template.content.querySelector(`.script-body[data-si="${si}"]`));
+        }
         card.querySelectorAll('.script-body').forEach(b=>{
           b.classList.toggle('active', b.dataset.si===si);
         });
@@ -600,11 +599,15 @@ function jumpToCard(code){
 }
 const searchBox = document.getElementById('searchBox');
 if (searchBox) {
+  let searchTimer;
   searchBox.addEventListener('input', (e)=>{
     const kw = e.target.value.trim();
+    clearTimeout(searchTimer);
+    searchTimer=setTimeout(()=>{
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
     document.querySelector('.chip[data-c="all"]').classList.add('active');
     render('all', kw);
+    },160);
   });
 }
 render('all');
@@ -616,6 +619,9 @@ document.querySelectorAll('.chip').forEach(ch=>{
     render(ch.dataset.c);
   });
 });
+</script>
+<script>
+document.querySelectorAll('.card').forEach(card=>{const code=card.id.slice(5);if(!SALES[code]){const note=document.createElement('p');note.className='top-note';note.textContent='10/06—11/04：暂无可靠匹配的同款销售数据，不代表零销量。';card.querySelector('.card-info').appendChild(note);}});
 </script>
 <script src="guide.js"></script>
 <script src="platform-snapshot.js"></script>
